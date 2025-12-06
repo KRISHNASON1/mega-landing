@@ -2,6 +2,7 @@
 
 import Hero from '@/components/home/Hero';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
+import StackingCardsShowcase from '@/components/home/StackingCardsShowcase';
 import BrandsShowcase from '@/components/home/BrandsShowcase';
 import ClientsShowcase from '@/components/home/ClientsShowcase';
 import GeMCompliance from '@/components/home/GeMCompliance';
@@ -12,6 +13,7 @@ export default function Home() {
     <>
       <Hero />
       <FeaturedProducts />
+      <StackingCardsShowcase />
       <BrandsShowcase />
       <ClientsShowcase />
       <GeMCompliance />

@@ -10,13 +10,21 @@ import GlassSurface from '../ui/GlassSurface';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isStaticMenuOpen, setIsStaticMenuOpen] = useState(false);
   const navRef = useRef(null);
+  const staticLogoRef = useRef(null);
+  const staticMenuRef = useRef(null);
+  const staticDropdownRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY > 100;
       if (scrolled !== isScrolled) {
         setIsScrolled(scrolled);
+        // Close static menu when scrolling
+        if (scrolled) {
+          setIsStaticMenuOpen(false);
+        }
       }
     };
 
@@ -24,9 +32,32 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isScrolled]);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        staticDropdownRef.current &&
+        !staticDropdownRef.current.contains(event.target) &&
+        staticMenuRef.current &&
+        !staticMenuRef.current.contains(event.target)
+      ) {
+        setIsStaticMenuOpen(false);
+      }
+    };
+
+    if (isStaticMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isStaticMenuOpen]);
+
   useEffect(() => {
     if (!navRef.current) return;
 
+    // Animate floating navbar (shows when scrolled)
     if (isScrolled) {
       gsap.to(navRef.current, {
         y: 0,
@@ -42,6 +73,26 @@ const Navbar = () => {
         ease: 'power3.in',
       });
     }
+
+    // Animate static elements (hide when scrolled)
+    if (staticLogoRef.current && staticMenuRef.current) {
+      if (isScrolled) {
+        gsap.to([staticLogoRef.current, staticMenuRef.current], {
+          y: -100,
+          opacity: 0,
+          duration: 0.3,
+          ease: 'power3.in',
+        });
+      } else {
+        gsap.to([staticLogoRef.current, staticMenuRef.current], {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          ease: 'power3.out',
+          delay: 0.1,
+        });
+      }
+    }
   }, [isScrolled]);
 
   const navLinks = [
@@ -53,6 +104,100 @@ const Navbar = () => {
 
   return (
     <>
+      {/* Static Logo - Top Left (shows when NOT scrolled) */}
+      <div
+        ref={staticLogoRef}
+        className="fixed top-6 left-6 z-50 transition-all duration-300"
+      >
+        <Link href="/" className="flex items-center space-x-4 group">
+          <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 overflow-hidden p-2 shadow-xl">
+            <Image
+              src="/logo.png"
+              alt="MEGA Logo"
+              width={64}
+              height={64}
+              className="object-contain w-full h-full"
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-2xl font-bold text-gray-900 drop-shadow-sm">MEGA</span>
+            <span className="text-sm text-gray-700 -mt-1 font-medium">Enterprise</span>
+          </div>
+        </Link>
+      </div>
+
+      {/* Static Menu Bubble - Top Right (shows when NOT scrolled) */}
+      <div
+        ref={staticMenuRef}
+        className="fixed top-6 right-6 z-50 transition-all duration-300"
+      >
+        <GlassSurface
+          width={70}
+          height={70}
+          borderRadius={20}
+          brightness={98}
+          opacity={0.85}
+          blur={11}
+          displace={2}
+          backgroundOpacity={0.3}
+          saturation={1.1}
+          className="shadow-xl"
+        >
+          <button
+            onClick={() => setIsStaticMenuOpen(!isStaticMenuOpen)}
+            className="w-full h-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+            aria-label="Toggle Menu"
+          >
+            {isStaticMenuOpen ? (
+              <X className="w-6 h-6 text-gray-900" />
+            ) : (
+              <Menu className="w-6 h-6 text-gray-900" />
+            )}
+          </button>
+        </GlassSurface>
+
+        {/* Dropdown Menu */}
+        {isStaticMenuOpen && (
+          <div
+            ref={staticDropdownRef}
+            className="absolute top-20 right-0 w-56 animate-in fade-in slide-in-from-top-2 duration-300"
+          >
+            <GlassSurface
+              width="100%"
+              height="auto"
+              borderRadius={20}
+              brightness={98}
+              opacity={0.9}
+              blur={15}
+              displace={2}
+              backgroundOpacity={0.4}
+              saturation={1.1}
+              className="shadow-2xl"
+            >
+              <div className="flex flex-col py-4">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsStaticMenuOpen(false)}
+                    className="px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-gray-50/50 font-semibold transition-all duration-200 border-b border-gray-200/30 last:border-b-0"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+                <Link
+                  href="/contact"
+                  onClick={() => setIsStaticMenuOpen(false)}
+                  className="mx-4 mt-3 px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-full font-semibold text-center hover:shadow-lg hover:scale-105 transition-all duration-200"
+                >
+                  Get Quote
+                </Link>
+              </div>
+            </GlassSurface>
+          </div>
+        )}
+      </div>
+
       {/* Floating Glass Navbar - Only appears on scroll */}
       <nav
         ref={navRef}
