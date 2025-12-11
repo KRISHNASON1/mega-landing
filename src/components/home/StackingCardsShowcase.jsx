@@ -132,6 +132,11 @@ const StackingCardsShowcase = () => {
   useEffect(() => {
     if (typeof window === 'undefined' || !sectionRef.current) return;
 
+    // Ensure smooth scrolling is enabled across all browsers
+    ScrollTrigger.normalizeScroll(true);
+
+    let scrollTriggerInstance = null;
+
     const ctx = gsap.context(() => {
       const isMobile = window.innerWidth < 768;
       const cardsPerStack = isMobile ? 1 : 3;
@@ -164,7 +169,8 @@ const StackingCardsShowcase = () => {
           opacity: stackNumber === 0 ? 1 : 0,
           scale: 1,
           zIndex: stackNumber === 0 ? 100 : index,
-          transformOrigin: 'center center'
+          transformOrigin: 'center center',
+          force3D: true // Ensures GPU acceleration
         });
       });
 
@@ -172,23 +178,32 @@ const StackingCardsShowcase = () => {
       gsap.set(ctaRef.current, {
         y: window.innerHeight,
         opacity: 0,
-        scale: 0.9
+        scale: 0.9,
+        force3D: true // Ensures GPU acceleration
       });
 
       // Create master timeline with ScrollTrigger
-      // Increased end value to add more scroll distance for CTA reveal
+      // Optimized for smooth scrolling performance
       const masterTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           pin: true,
-          scrub: 1,
+          scrub: 0.5, // Reduced from 1 to 0.5 for smoother interpolation
           start: 'top top',
-          end: '+=500%', // Increased from 400% to 500% for CTA time
+          end: '+=400%', // Reduced from 500% to 400% for better performance
           anticipatePin: 1,
           invalidateOnRefresh: true,
-          pinSpacing: true
-        }
+          pinSpacing: true,
+          fastScrollEnd: true, // Prevents animation lag on fast scrolls
+          onRefresh: (self) => {
+            scrollTriggerInstance = self;
+          }
+        },
+        smoothChildTiming: true // Smooths child animation timing
       });
+
+      // Store the ScrollTrigger instance
+      scrollTriggerInstance = masterTimeline.scrollTrigger;
 
       // Animation for each stack
       for (let stackIndex = 1; stackIndex < totalStacks; stackIndex++) {
@@ -221,7 +236,8 @@ const StackingCardsShowcase = () => {
                 scale: 1 - stackLevel * 0.08,
                 zIndex: prevStackIndex,
                 duration: 1,
-                ease: 'power2.inOut'
+                ease: 'none', // Changed from 'power2.inOut' for smoother scrubbing
+                force3D: true // Ensures GPU acceleration
               },
               label
             );
@@ -242,7 +258,8 @@ const StackingCardsShowcase = () => {
               y: window.innerHeight,
               opacity: 0,
               scale: 0.9,
-              rotateZ: 0
+              rotateZ: 0,
+              force3D: true
             },
             {
               x: baseX + offset.x,
@@ -252,7 +269,8 @@ const StackingCardsShowcase = () => {
               scale: 1,
               zIndex: 100,
               duration: 1,
-              ease: 'power2.out'
+              ease: 'none', // Changed from 'power2.out' for smoother scrubbing
+              force3D: true // Ensures GPU acceleration
             },
             label
           );
@@ -268,8 +286,9 @@ const StackingCardsShowcase = () => {
         {
           y: -window.innerHeight,
           duration: 1,
-          ease: 'power2.in',
-          stagger: 0.03
+          ease: 'none', // Changed from 'power2.in' for smoother scrubbing
+          stagger: 0.03,
+          force3D: true // Ensures GPU acceleration
         },
         exitLabel
       );
@@ -280,14 +299,16 @@ const StackingCardsShowcase = () => {
         {
           y: window.innerHeight,
           opacity: 0,
-          scale: 0.9
+          scale: 0.9,
+          force3D: true
         },
         {
           y: 0,
           opacity: 1,
           scale: 1,
           duration: 0.8,
-          ease: 'back.out(1.7)'
+          ease: 'back.out(1.7)', // Keep this easing for nice bounce effect
+          force3D: true // Ensures GPU acceleration
         },
         exitLabel + '+=0.5'
       );
@@ -297,12 +318,30 @@ const StackingCardsShowcase = () => {
         y: 0,
         opacity: 1,
         scale: 1,
-        duration: 0.5
+        duration: 0.5,
+        force3D: true // Ensures GPU acceleration
       });
 
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      // Kill all GSAP animations immediately
+      gsap.killTweensOf('*');
+
+      // Kill the ScrollTrigger instance immediately
+      if (scrollTriggerInstance) {
+        scrollTriggerInstance.kill(true);
+      }
+
+      // Disable normalize scroll before cleanup
+      ScrollTrigger.normalizeScroll(false);
+
+      // Revert the GSAP context
+      ctx.revert();
+
+      // Clear all ScrollTriggers
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill(true));
+    };
   }, []);
 
   // Responsive handler
@@ -353,7 +392,7 @@ const StackingCardsShowcase = () => {
               className="group cursor-pointer absolute inset-0 mx-auto w-full md:w-auto"
               style={{
                 transformStyle: 'preserve-3d',
-                willChange: 'transform'
+                willChange: 'transform, opacity' // Optimized for both transform and opacity changes
               }}
             >
               <GlassSurface
@@ -402,7 +441,7 @@ const StackingCardsShowcase = () => {
           <div
             ref={ctaRef}
             className="absolute inset-0 flex items-center justify-center pointer-events-none"
-            style={{ willChange: 'transform' }}
+            style={{ willChange: 'transform, opacity' }} // Optimized for both transform and opacity changes
           >
             <Link
               href="/products"
