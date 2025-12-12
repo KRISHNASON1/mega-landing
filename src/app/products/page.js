@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { Search, Filter } from 'lucide-react';
-import GlassSurface from '@/components/ui/GlassSurface';
 
 export default function ProductsPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -88,100 +87,97 @@ export default function ProductsPage() {
 
         {/* Search & Filter */}
         <div className="mb-12">
-          <GlassSurface
-            width="100%"
-            height="auto"
-            borderRadius={20}
-            brightness={98}
-            opacity={0.5}
-          >
-            <div className="p-6">
-              <div className="flex flex-col md:flex-row gap-4">
-                {/* Search */}
-                <div className="flex-1 relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  <input
-                    type="text"
-                    placeholder="Search products..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white/50"
-                  />
-                </div>
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 p-6">
+            <div className="flex flex-col md:flex-row gap-4">
+              {/* Search */}
+              <div className="flex-1 relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white/50"
+                />
+              </div>
 
-                {/* Category Filter */}
-                <div className="relative">
-                  <Filter className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
-                  <select
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="pl-12 pr-8 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white/50 appearance-none cursor-pointer"
-                  >
-                    {categories.map((category) => (
-                      <option key={category} value={category === 'All Products' ? 'all' : category}>
-                        {category}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+              {/* Category Filter */}
+              <div className="relative">
+                <Filter className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="pl-12 pr-8 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white/50 appearance-none cursor-pointer"
+                >
+                  {categories.map((category) => (
+                    <option key={category} value={category === 'All Products' ? 'all' : category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
-          </GlassSurface>
+          </div>
         </div>
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map((product, index) => (
-            <div key={index} className="group">
-              <GlassSurface
-                width="100%"
-                height={420}
-                borderRadius={24}
-                brightness={98}
-                opacity={0.6}
-                className="transform hover:scale-105 transition-all duration-300 cursor-pointer"
-              >
-                <div className="relative h-full w-full overflow-hidden rounded-3xl flex flex-col">
-                  {/* Image */}
-                  <div className="h-48 overflow-hidden">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 p-6 flex flex-col">
-                    <span className="text-xs font-semibold text-primary-600 mb-2">
-                      {product.category}
-                    </span>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      {product.name}
-                    </h3>
-                    <p className="text-gray-600 mb-4 flex-1">
-                      {product.description}
-                    </p>
-
-                    {/* Brands */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {product.brands.map((brand) => (
-                        <span
-                          key={brand}
-                          className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-medium"
-                        >
-                          {brand}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* CTA */}
-                    <button className="w-full py-2 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:shadow-lg transition-all">
-                      Get Quote
-                    </button>
-                  </div>
+            <div
+              key={index}
+              className="group bg-white rounded-3xl transform hover:scale-105 transition-all duration-300 cursor-pointer h-[420px]"
+              style={{
+                boxShadow: `
+                  0 2px 4px rgba(255, 255, 255, 0.9) inset,
+                  0 -2px 4px rgba(0, 0, 0, 0.05) inset,
+                  0 8px 24px rgba(0, 0, 0, 0.08),
+                  0 2px 8px rgba(0, 0, 0, 0.04),
+                  0 0 0 1px rgba(255, 255, 255, 0.8),
+                  0 0 0 2px rgba(0, 0, 0, 0.03)
+                `,
+                background: 'linear-gradient(145deg, #ffffff 0%, #fafafa 100%)',
+              }}
+            >
+              <div className="relative h-full w-full overflow-hidden rounded-3xl flex flex-col">
+                {/* Image */}
+                <div className="h-48 overflow-hidden rounded-t-3xl">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
-              </GlassSurface>
+
+                {/* Content */}
+                <div className="flex-1 p-6 flex flex-col">
+                  <span className="text-xs font-semibold text-primary-600 mb-2">
+                    {product.category}
+                  </span>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    {product.name}
+                  </h3>
+                  <p className="text-gray-600 mb-4 flex-1">
+                    {product.description}
+                  </p>
+
+                  {/* Brands */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {product.brands.map((brand) => (
+                      <span
+                        key={brand}
+                        className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-medium"
+                      >
+                        {brand}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <button className="w-full py-2 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:shadow-lg transition-all">
+                    Get Quote
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -195,28 +191,20 @@ export default function ProductsPage() {
 
         {/* CTA Section */}
         <div className="mt-20 text-center">
-          <GlassSurface
-            width="100%"
-            height="auto"
-            borderRadius={24}
-            brightness={98}
-            opacity={0.5}
-          >
-            <div className="p-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Can't Find What You're Looking For?
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                We have 1000+ products in stock. Contact us for custom requirements.
-              </p>
-              <a
-                href="/contact"
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
-              >
-                Contact Us
-              </a>
-            </div>
-          </GlassSurface>
+          <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg border border-gray-200 p-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Can't Find What You're Looking For?
+            </h2>
+            <p className="text-lg text-gray-600 mb-8">
+              We have 1000+ products in stock. Contact us for custom requirements.
+            </p>
+            <a
+              href="/contact"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+            >
+              Contact Us
+            </a>
+          </div>
         </div>
       </div>
     </div>
