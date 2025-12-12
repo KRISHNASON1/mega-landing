@@ -1,7 +1,6 @@
 'use client';
 
 import { Star } from 'lucide-react';
-import GlassSurface from '../ui/GlassSurface';
 
 const ClientsShowcase = () => {
   const clients = [
@@ -37,24 +36,24 @@ const ClientsShowcase = () => {
           {clients.map((client, index) => (
             <div
               key={index}
-              className="group transform hover:-translate-y-2 transition-all duration-300"
+              className="group relative transform hover:-translate-y-2 transition-all duration-300"
             >
-              <GlassSurface
-                width="100%"
-                height={120}
-                borderRadius={16}
-                brightness={98}
-                opacity={0.4}
-                className="cursor-pointer"
-              >
+              {/* Gradient border glow on hover */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-300" />
+
+              {/* Card */}
+              <div className="relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer overflow-hidden h-[120px]">
+                {/* Subtle top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-primary-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+
                 <div className="flex items-center justify-center h-full p-6">
                   <img
                     src={client.logo}
                     alt={client.name}
-                    className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all"
+                    className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
-              </GlassSurface>
+              </div>
             </div>
           ))}
         </div>
