@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Package, Zap, Shield, Cpu, Cable, Lightbulb, Wrench, Settings, Box, Cpu2, Hammer, BatteryCharging } from 'lucide-react';
+import { ArrowRight, Package, Zap, Shield, Cpu, Cable, Lightbulb, Wrench, Settings, Box, BrainCircuit, Hammer, BatteryCharging } from 'lucide-react';
 import Link from 'next/link';
 
 if (typeof window !== 'undefined') {
@@ -109,7 +109,7 @@ const StackingCardsShowcase = () => {
       image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
       color: 'from-cyan-500 to-cyan-700',
       category: 'Electronics',
-      icon: Cpu2
+      icon: BrainCircuit
     },
     {
       id: 11,
