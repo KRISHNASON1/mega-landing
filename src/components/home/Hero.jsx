@@ -4,7 +4,6 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Play } from 'lucide-react';
 import { gsap } from 'gsap';
-import GlassSurface from '../ui/GlassSurface';
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -172,21 +171,18 @@ const Hero = () => {
               { value: 'GeM', label: 'Approved Vendor' },
             ].map((stat, index) => (
               <div key={index} className="glass-float">
-                <GlassSurface
-                  width="100%"
-                  height={160}
-                  borderRadius={24}
-                  brightness={95}
-                  opacity={0.5}
-                  className="transform hover:scale-105 transition-transform duration-300"
-                >
-                  <div className="text-center p-6">
+                <div className="relative h-40 rounded-3xl backdrop-blur-xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/30 shadow-2xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                  {/* Liquid glass shine effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/5 to-transparent pointer-events-none"></div>
+                  {/* Bottom gradient for depth */}
+                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white/5 to-transparent pointer-events-none"></div>
+                  <div className="relative text-center p-6">
                     <div className="text-4xl font-bold bg-gradient-to-r from-primary-700 to-primary-500 bg-clip-text text-transparent mb-2">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+                    <div className="text-sm text-gray-800 font-semibold">{stat.label}</div>
                   </div>
-                </GlassSurface>
+                </div>
               </div>
             ))}
           </div>
