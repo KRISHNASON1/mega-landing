@@ -2,7 +2,6 @@
 
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import ContactForm from '@/components/shared/ContactForm';
-import GlassSurface from '@/components/ui/GlassSurface';
 
 export default function ContactPage() {
   const contactInfo = [
@@ -48,16 +47,12 @@ export default function ContactPage() {
           {contactInfo.map((info, index) => {
             const Icon = info.icon;
             return (
-              <GlassSurface
-                key={index}
-                width="100%"
-                height="auto"
-                borderRadius={20}
-                brightness={98}
-                opacity={0.5}
-                className="transform hover:scale-105 transition-all duration-300"
-              >
-                <div className="p-6 text-center">
+              <div key={index} className="relative rounded-2xl backdrop-blur-xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/30 shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                {/* Liquid glass shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/5 to-transparent pointer-events-none"></div>
+                {/* Bottom gradient for depth */}
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white/5 to-transparent pointer-events-none"></div>
+                <div className="relative p-6 text-center">
                   <div className="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-7 h-7 text-primary-600" />
                   </div>
@@ -79,7 +74,7 @@ export default function ContactPage() {
                     ))}
                   </div>
                 </div>
-              </GlassSurface>
+              </div>
             );
           })}
         </div>
@@ -93,14 +88,12 @@ export default function ContactPage() {
 
           {/* Map */}
           <div>
-            <GlassSurface
-              width="100%"
-              height={600}
-              borderRadius={24}
-              brightness={98}
-              opacity={0.5}
-            >
-              <div className="h-full w-full overflow-hidden rounded-3xl">
+            <div className="relative h-[600px] rounded-3xl backdrop-blur-xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/30 shadow-xl overflow-hidden">
+              {/* Liquid glass shine effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/5 to-transparent pointer-events-none z-10"></div>
+              {/* Bottom gradient for depth */}
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white/5 to-transparent pointer-events-none z-10"></div>
+              <div className="relative h-full w-full overflow-hidden rounded-3xl">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.5447892345!2d73.1089!3d19.0760!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA0JzMzLjYiTiA3M8KwMDYnMzIuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
                   width="100%"
@@ -113,20 +106,18 @@ export default function ContactPage() {
                   className="rounded-3xl"
                 ></iframe>
               </div>
-            </GlassSurface>
+            </div>
           </div>
         </div>
 
         {/* Alternative Contact Methods */}
         <div className="text-center">
-          <GlassSurface
-            width="100%"
-            height="auto"
-            borderRadius={24}
-            brightness={98}
-            opacity={0.5}
-          >
-            <div className="p-12">
+          <div className="relative rounded-3xl backdrop-blur-xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/30 shadow-xl overflow-hidden">
+            {/* Liquid glass shine effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/5 to-transparent pointer-events-none"></div>
+            {/* Bottom gradient for depth */}
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white/5 to-transparent pointer-events-none"></div>
+            <div className="relative p-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 Prefer Instant Communication?
               </h2>
@@ -154,7 +145,7 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
-          </GlassSurface>
+          </div>
         </div>
       </div>
     </div>

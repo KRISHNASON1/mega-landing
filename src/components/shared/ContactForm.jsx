@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
-import GlassSurface from '../ui/GlassSurface';
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,15 +38,12 @@ const ContactForm = () => {
   };
 
   return (
-    <GlassSurface
-      width="100%"
-      height="auto"
-      borderRadius={24}
-      brightness={98}
-      opacity={0.5}
-      className="max-w-2xl mx-auto"
-    >
-      <div className="p-8">
+    <div className="relative max-w-2xl mx-auto rounded-3xl backdrop-blur-xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/30 shadow-xl overflow-hidden">
+      {/* Liquid glass shine effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/5 to-transparent pointer-events-none"></div>
+      {/* Bottom gradient for depth */}
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white/5 to-transparent pointer-events-none"></div>
+      <div className="relative p-8">
         <div className="text-center mb-8">
           <h3 className="text-3xl font-bold text-gray-900 mb-2">Get a Quote Today</h3>
           <p className="text-gray-600">
@@ -225,7 +221,7 @@ const ContactForm = () => {
           )}
         </form>
       </div>
-    </GlassSurface>
+    </div>
   );
 };
 
