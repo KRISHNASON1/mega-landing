@@ -1,7 +1,6 @@
 'use client';
 
 import { ArrowRight, MessageSquare } from 'lucide-react';
-import GlassSurface from '../ui/GlassSurface';
 
 const CTASection = () => {
   return (
@@ -16,16 +15,7 @@ const CTASection = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <GlassSurface
-            width="100%"
-            height="auto"
-            borderRadius={32}
-            brightness={100}
-            opacity={0.1}
-            backgroundOpacity={0.1}
-            className="mx-auto max-w-4xl"
-          >
-            <div className="p-12">
+          <div className="mx-auto max-w-4xl p-12 rounded-[32px] backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Ready to Start Your <span className="text-primary-200">Next Project?</span>
               </h2>
@@ -70,9 +60,8 @@ const CTASection = () => {
                 </div>
               </div>
             </div>
-          </GlassSurface>
+          </div>
         </div>
-      </div>
     </section>
   );
 };

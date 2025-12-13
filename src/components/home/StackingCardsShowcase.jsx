@@ -170,7 +170,7 @@ const StackingCardsShowcase = () => {
           x: baseX + offset.x,
           y: stackNumber === 0 ? offset.y : window.innerHeight,
           rotateZ: stackNumber === 0 ? offset.rotation : 0,
-          opacity: stackNumber === 0 ? 1 : 0,
+          opacity: 1,
           scale: 1,
           zIndex: stackNumber === 0 ? 100 : index,
           transformOrigin: 'center center',
@@ -260,7 +260,7 @@ const StackingCardsShowcase = () => {
             cardsRefs.current[i],
             {
               y: window.innerHeight,
-              opacity: 0,
+              opacity: 1,
               scale: 0.9,
               rotateZ: 0,
               force3D: true
