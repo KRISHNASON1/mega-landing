@@ -95,8 +95,19 @@ const Navbar = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="w-[520px] bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/50 overflow-hidden">
-          <div className="p-6">
+        <div className="w-[520px] bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/50 overflow-hidden relative">
+          {/* Background Logo Pattern */}
+          <div
+            className="absolute top-1/2 -translate-y-1/2 -right-12 w-[480px] h-[480px] opacity-[0.08] pointer-events-none"
+            style={{
+              backgroundImage: 'url(/logo-pattern.png)',
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center right',
+            }}
+          />
+
+          <div className="p-6 relative z-10">
             <div className="grid grid-cols-2 gap-8">
               {/* Products Column */}
               <div>
