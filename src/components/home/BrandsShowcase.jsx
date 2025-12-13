@@ -11,7 +11,7 @@ if (typeof window !== 'undefined') {
 const BrandsShowcase = () => {
   const sectionRef = useRef(null);
   const marqueeRef = useRef(null);
-  const [animationDuration, setAnimationDuration] = useState(30);
+  const [animationDuration, setAnimationDuration] = useState(60);
 
   const brands = [
     { name: 'Siemens', logo: '/images/logos/logo_1.png' },
@@ -37,21 +37,21 @@ const BrandsShowcase = () => {
         trigger: sectionRef.current,
         pin: true,
         start: 'top top',
-        end: '+=100%',
+        end: '+=80%',
         anticipatePin: 1,
         invalidateOnRefresh: true,
         scrub: 0.5,
         onUpdate: (self) => {
-          // Speed up marquee: from 30s (base) down to 3s when scrolling fast
-          const newDuration = 30 - (self.progress * 27);
-          setAnimationDuration(Math.max(3, newDuration));
+          // Speed up marquee: from 60s (base) down to 35s when scrolling fast
+          const newDuration = 60 - (self.progress * 25);
+          setAnimationDuration(Math.max(35, newDuration));
         },
         onLeave: () => {
           // Smoothly return to base speed
-          setAnimationDuration(30);
+          setAnimationDuration(60);
         },
         onEnterBack: () => {
-          setAnimationDuration(30);
+          setAnimationDuration(60);
         }
       });
     }, sectionRef);

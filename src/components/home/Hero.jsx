@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Play } from 'lucide-react';
 import { gsap } from 'gsap';
@@ -10,6 +10,17 @@ const Hero = () => {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const ctaRef = useRef(null);
+  const exploreButtonRef = useRef(null);
+  const imagesRef = useRef([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Array of images to cycle through - place your images in public/images/hero/
+  const heroImages = [
+    '/images/hero/1.png',
+    '/images/hero/2.png',
+    '/images/hero/3.png',
+    '/images/hero/4.png',
+  ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -39,6 +50,45 @@ const Hero = () => {
             duration: 0.8,
           },
           '-=0.5'
+        )
+        .from(
+          exploreButtonRef.current,
+          {
+            y: 50,
+            opacity: 0,
+            scale: 0.8,
+            duration: 1,
+            ease: 'back.out(1.7)',
+            onComplete: () => {
+              // Exciting animations when button finishes animating
+              // Pulse effect
+              gsap.to(exploreButtonRef.current, {
+                scale: 1.1,
+                duration: 0.3,
+                yoyo: true,
+                repeat: 1,
+                ease: 'power2.inOut',
+              });
+
+              // Glow effect
+              gsap.to(exploreButtonRef.current.querySelector('.button-glow'), {
+                opacity: 0.8,
+                duration: 0.5,
+                yoyo: true,
+                repeat: 1,
+              });
+
+              // Continuous subtle animations
+              gsap.to(exploreButtonRef.current, {
+                y: -5,
+                duration: 2,
+                ease: 'sine.inOut',
+                yoyo: true,
+                repeat: -1,
+              });
+            },
+          },
+          '-=0.3'
         );
 
       // Floating animation for glass cards
@@ -68,6 +118,17 @@ const Hero = () => {
         repeat: -1,
         delay: 1,
       });
+
+      // Initial setup for images - hide all except first
+      imagesRef.current.forEach((img, index) => {
+        if (img) {
+          gsap.set(img, {
+            opacity: index === 0 ? 1 : 0,
+            scale: index === 0 ? 1 : 0.8,
+            x: index === 0 ? 0 : 100,
+          });
+        }
+      });
     }, heroRef);
 
     return () => {
@@ -78,11 +139,58 @@ const Hero = () => {
       if (titleRef.current) gsap.killTweensOf(titleRef.current);
       if (subtitleRef.current) gsap.killTweensOf(subtitleRef.current);
       if (ctaRef.current) gsap.killTweensOf(ctaRef.current);
+      imagesRef.current.forEach(img => {
+        if (img) gsap.killTweensOf(img);
+      });
 
       // Revert the GSAP context
       ctx.revert();
     };
   }, []);
+
+  // Animated image cycling effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => {
+        const nextIndex = (prev + 1) % heroImages.length;
+
+        // Animate out current image
+        if (imagesRef.current[prev]) {
+          gsap.to(imagesRef.current[prev], {
+            opacity: 0,
+            scale: 0.8,
+            x: -100,
+            duration: 0.8,
+            ease: 'power2.in',
+          });
+        }
+
+        // Animate in next image
+        if (imagesRef.current[nextIndex]) {
+          gsap.fromTo(
+            imagesRef.current[nextIndex],
+            {
+              opacity: 0,
+              scale: 0.8,
+              x: 100,
+            },
+            {
+              opacity: 1,
+              scale: 1,
+              x: 0,
+              duration: 0.8,
+              ease: 'power2.out',
+              delay: 0.2,
+            }
+          );
+        }
+
+        return nextIndex;
+      });
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   return (
     <section
@@ -115,7 +223,9 @@ const Hero = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-        <div className="text-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Left Column - Text Content */}
+          <div className="text-center lg:text-left">
           {/* Trust Badge */}
           <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-white/40 shadow-lg">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
@@ -137,7 +247,7 @@ const Hero = () => {
           {/* Subtitle */}
           <p
             ref={subtitleRef}
-            className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto lg:mx-0 leading-relaxed"
           >
             Your trusted partner in industrial & project materials.
             <span className="font-semibold text-primary-700"> 20+ years of excellence</span>,
@@ -145,7 +255,7 @@ const Hero = () => {
           </p>
 
           {/* CTAs */}
-          <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+          <div ref={ctaRef} className="flex flex-col sm:flex-row items-center lg:items-start lg:justify-start justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <Link
               href="/contact"
               className="group px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex items-center space-x-2"
@@ -162,8 +272,56 @@ const Hero = () => {
             </Link>
           </div>
 
+          {/* Explore More Products Button - Enhanced with Animations */}
+          <div className="mt-12 flex justify-center lg:justify-start">
+            <Link
+              href="/products"
+              ref={exploreButtonRef}
+              className="group relative"
+            >
+              {/* Animated glow background */}
+              <div className="button-glow absolute -inset-1 bg-gradient-to-r from-primary-600 via-pink-600 to-primary-600 rounded-full opacity-0 blur-xl transition-all duration-300 group-hover:opacity-100 animate-gradient-xy"></div>
+
+              {/* Main button */}
+              <div className="relative px-10 py-5 bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 text-white rounded-full font-bold text-xl shadow-2xl overflow-hidden transition-all duration-300 group-hover:scale-105 group-hover:shadow-primary-500/50">
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+                </div>
+
+                {/* Particles effect on hover */}
+                <div className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="particle absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full animate-particle-1"></div>
+                  <div className="particle absolute top-1/2 left-1/3 w-1 h-1 bg-white rounded-full animate-particle-2"></div>
+                  <div className="particle absolute top-3/4 left-2/3 w-1 h-1 bg-white rounded-full animate-particle-3"></div>
+                  <div className="particle absolute top-1/3 left-3/4 w-1 h-1 bg-white rounded-full animate-particle-4"></div>
+                </div>
+
+                {/* Border animation */}
+                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 rounded-full border-2 border-white/50 animate-ping-slow"></div>
+                </div>
+
+                {/* Button content */}
+                <div className="relative flex items-center space-x-3">
+                  <span className="relative">
+                    Explore More Products
+                    {/* Underline animation */}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300"></span>
+                  </span>
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300 group-hover:rotate-[-10deg]" />
+
+                  {/* Sparkle on hover */}
+                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    ✨
+                  </span>
+                </div>
+              </div>
+            </Link>
+          </div>
+
           {/* Stats with Glass Effect */}
-          <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-3">
             {[
               { value: '20+', label: 'Years Experience' },
               { value: '50+', label: 'Major Clients' },
@@ -171,20 +329,86 @@ const Hero = () => {
               { value: 'GeM', label: 'Approved Vendor' },
             ].map((stat, index) => (
               <div key={index} className="glass-float">
-                <div className="relative h-40 rounded-3xl backdrop-blur-xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/30 shadow-2xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                <div className="relative h-20 lg:h-24 rounded-xl backdrop-blur-xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/30 shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
                   {/* Liquid glass shine effect */}
                   <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/5 to-transparent pointer-events-none"></div>
                   {/* Bottom gradient for depth */}
                   <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white/5 to-transparent pointer-events-none"></div>
-                  <div className="relative text-center p-6">
-                    <div className="text-4xl font-bold bg-gradient-to-r from-primary-700 to-primary-500 bg-clip-text text-transparent mb-2">
+                  <div className="relative h-full flex flex-col items-center justify-center p-2 lg:p-3">
+                    <div className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary-700 to-primary-500 bg-clip-text text-transparent mb-1">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-gray-800 font-semibold">{stat.label}</div>
+                    <div className="text-[10px] lg:text-xs text-gray-800 font-semibold text-center leading-tight">{stat.label}</div>
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+          </div>
+
+          {/* Right Column - Animated Images */}
+          <div className="relative hidden lg:block -mt-12">
+            <div className="relative w-full h-[600px]">
+              {/* Decorative Elements */}
+              <div className="absolute -top-4 -right-4 w-72 h-72 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+              <div className="absolute -bottom-4 -left-4 w-72 h-72 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
+
+              {/* Image Container with Stacked Effect */}
+              <div className="relative w-full h-full flex items-center justify-center">
+                {heroImages.map((image, index) => (
+                  <div
+                    key={index}
+                    ref={(el) => (imagesRef.current[index] = el)}
+                    className="absolute inset-0 flex items-center justify-center"
+                    style={{
+                      willChange: 'transform, opacity',
+                    }}
+                  >
+                    <div className="relative w-full h-full max-w-lg">
+                      {/* Glass morphism card wrapper */}
+                      <div className="relative w-full h-full rounded-3xl backdrop-blur-xl bg-white/10 border border-white/30 shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300">
+                        {/* Image */}
+                        <img
+                          src={image}
+                          alt={`Hero showcase ${index + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+
+                        {/* Shine effect */}
+                        <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-1000"></div>
+                        </div>
+                      </div>
+
+                      {/* Floating badges */}
+                      <div className="absolute -bottom-4 -left-4 bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-3 shadow-xl border border-white/40">
+                        <div className="text-sm font-semibold text-primary-700">Premium Quality</div>
+                      </div>
+                      <div className="absolute -top-4 -right-4 bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-3 shadow-xl border border-white/40">
+                        <div className="text-sm font-semibold text-primary-700">Certified Products</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Progress Indicators */}
+              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                {heroImages.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      index === currentImageIndex
+                        ? 'w-8 bg-primary-600'
+                        : 'w-2 bg-gray-300'
+                    }`}
+                  ></div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
