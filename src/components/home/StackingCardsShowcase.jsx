@@ -17,7 +17,6 @@ const StackingCardsShowcase = () => {
   const ctaRef = useRef(null);
   const isUnmountingRef = useRef(false);
   const backgroundLinesRef = useRef(null);
-  const uniqueId = useRef(`bg-lines-${Math.random().toString(36).substring(2, 11)}`);
 
   // 12 products for desktop (4 stacks of 3)
   const products = [
@@ -327,37 +326,59 @@ const StackingCardsShowcase = () => {
         force3D: true // Ensures GPU acceleration
       });
 
-      // Background lines parallax animation - lines flow from top to bottom
+      // Background image scroll animation - synced with card animations
       if (backgroundLinesRef.current) {
-        // Set initial state - completely hidden
-        gsap.set(backgroundLinesRef.current, {
-          y: -200,
-          opacity: 0
-        });
+        const img = backgroundLinesRef.current.querySelector('img');
+        if (img) {
+          // Wait for image to load to get actual height
+          const setupImageAnimation = () => {
+            const imageHeight = img.naturalHeight;
+            const viewportHeight = window.innerHeight;
 
-        // Create timeline for lines animation
-        const linesTimeline = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 2,  // Increased from 0.8 to 2 for slower, smoother movement
-            invalidateOnRefresh: true
+            // Calculate travel distance for precise sync
+            const startY = -imageHeight;
+            const endY = viewportHeight;
+
+            // Set initial state - image positioned above viewport
+            gsap.set(img, {
+              y: startY,
+              opacity: 0,
+              force3D: true
+            });
+
+            // Create timeline synced to main scroll
+            const imageTimeline = gsap.timeline({
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top top',
+                end: '+=400%',          // Match card animation scroll distance
+                scrub: 0.5,             // Match master timeline for tight sync
+                invalidateOnRefresh: true
+              }
+            });
+
+            // Fade in during first 10% of scroll, then move from top to bottom
+            imageTimeline
+              .to(img, {
+                opacity: 1,
+                duration: 0.1,          // Fade in during first 10% of scroll
+                ease: 'none',
+                force3D: true
+              })
+              .to(img, {
+                y: endY,                // Move from top to bottom
+                duration: 0.9,          // Remaining 90% of scroll
+                ease: 'none',           // Linear movement for predictable sync
+                force3D: true
+              }, 0.1);
+          };
+
+          if (img.complete) {
+            setupImageAnimation();
+          } else {
+            img.addEventListener('load', setupImageAnimation);
           }
-        });
-
-        // Fade in quickly at start, then flow downward slowly
-        linesTimeline
-          .to(backgroundLinesRef.current, {
-            opacity: 1,
-            duration: 0.05,
-            ease: 'none'
-          })
-          .to(backgroundLinesRef.current, {
-            y: 600,  // Reduced from 1200 to 600 for slower movement
-            duration: 0.95,
-            ease: 'none'
-          }, 0.05);
+        }
       }
 
     }, sectionRef);
@@ -397,6 +418,20 @@ const StackingCardsShowcase = () => {
       if (cardsContainerRef.current) {
         try {
           gsap.killTweensOf(cardsContainerRef.current);
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
+      }
+
+      if (backgroundLinesRef.current) {
+        try {
+          gsap.killTweensOf(backgroundLinesRef.current);
+          const img = backgroundLinesRef.current.querySelector('img');
+          if (img) {
+            gsap.killTweensOf(img);
+            // Remove load event listener if it was added
+            img.removeEventListener('load', () => {});
+          }
         } catch (e) {
           // Ignore errors during cleanup
         }
@@ -453,66 +488,18 @@ const StackingCardsShowcase = () => {
         Skip product showcase
       </a>
 
-      {/* Tilted Wavy Lines Background */}
+      {/* Scroll-Synced Background Image */}
       <div
         ref={backgroundLinesRef}
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          transform: 'rotate(-12deg) scale(1.4)',
-          transformOrigin: 'center center'
-        }}
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+        style={{ backgroundColor: '#f2f5ee' }}
       >
-        <div className="absolute w-full" style={{ top: 0, height: '2400px' }}>
-          {[...Array(35)].map((_, i) => {
-            const spacing = 70;
-            const yPosition = i * spacing;
-            const isBlue = i % 2 === 0;
-            const gradientId = `${uniqueId.current}-grad-${i}`;
-
-            return (
-              <svg
-                key={i}
-                className="absolute w-full"
-                style={{
-                  top: `${yPosition}px`,
-                  height: '100px',
-                  left: 0,
-                  right: 0
-                }}
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="none"
-                viewBox="0 0 1200 100"
-              >
-                <defs>
-                  <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop
-                      offset="0%"
-                      stopColor={isBlue ? 'rgb(59, 130, 246)' : 'rgb(168, 85, 247)'}
-                      stopOpacity="0.08"
-                    />
-                    <stop
-                      offset="50%"
-                      stopColor={isBlue ? 'rgb(59, 130, 246)' : 'rgb(168, 85, 247)'}
-                      stopOpacity="0.2"
-                    />
-                    <stop
-                      offset="100%"
-                      stopColor={isBlue ? 'rgb(59, 130, 246)' : 'rgb(168, 85, 247)'}
-                      stopOpacity="0.08"
-                    />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M 0 50 Q 300 20, 600 50 T 1200 50"
-                  fill="none"
-                  stroke={`url(#${gradientId})`}
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-              </svg>
-            );
-          })}
-        </div>
+        <img
+          src="/background.png"
+          alt=""
+          className="absolute w-full h-auto object-cover"
+          style={{ willChange: 'transform' }}
+        />
       </div>
 
       {/* Animated Background */}
