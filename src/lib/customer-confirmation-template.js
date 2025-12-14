@@ -33,9 +33,13 @@ export function generateCustomerConfirmationHTML(formData) {
           <!-- Success Message -->
           <tr>
             <td style="padding: 40px 30px; text-align: center;">
-              <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
-                <span style="font-size: 48px; color: white;">✓</span>
-              </div>
+              <table role="presentation" style="width: 80px; height: 80px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 50%; margin: 0 auto 24px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
+                <tr>
+                  <td style="text-align: center; vertical-align: middle; font-size: 48px; color: white; line-height: 80px;">
+                    ✓
+                  </td>
+                </tr>
+              </table>
               <h2 style="margin: 0 0 16px; color: #2c3e50; font-size: 28px; font-weight: 700;">
                 Thank You, ${name}!
               </h2>

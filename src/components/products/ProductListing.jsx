@@ -1,9 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Check, Download, Phone } from 'lucide-react';
+import { ArrowLeft, Check, Download, Phone, Plus } from 'lucide-react';
+import { addToCart } from '@/lib/cart';
+import Toast from '@/components/shared/Toast';
 
 export default function ProductListing({ title, description, benefits, products, categoryBackLink }) {
+    const [toast, setToast] = useState(null);
     return (
         <div className="min-h-screen bg-gray-50 pt-32 pb-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,12 +87,29 @@ export default function ProductListing({ title, description, benefits, products,
                                     ))}
                                 </div>
 
-                                <Link
-                                    href={`/contact?product=${encodeURIComponent(product.name)}&desc=${encodeURIComponent(product.description)}&specs=${encodeURIComponent(product.specs?.join(', ') || '')}`}
-                                    className="w-full py-3 flex items-center justify-center bg-gray-900 text-white rounded-xl font-semibold hover:bg-primary-600 transition-colors"
-                                >
-                                    Enquire Now
-                                </Link>
+                                <div className="flex space-x-2">
+                                    <Link
+                                        href={`/contact?product=${encodeURIComponent(product.name)}&desc=${encodeURIComponent(product.description)}&specs=${encodeURIComponent(product.specs?.join(', ') || '')}`}
+                                        className="flex-1 px-6 py-3 flex items-center justify-center bg-gray-900 hover:bg-primary-600 text-white rounded-xl font-semibold transition-colors"
+                                    >
+                                        Enquire Now
+                                    </Link>
+                                    <button
+                                        onClick={() => {
+                                            const added = addToCart(product);
+                                            if (added) {
+                                                setToast({ productName: product.name });
+                                            } else {
+                                                // Product already in cart - could show different notification
+                                                alert(`${product.name} is already in your enquiry list`);
+                                            }
+                                        }}
+                                        className="w-12 h-12 flex items-center justify-center bg-gray-400 hover:bg-gray-700 text-white rounded-xl font-semibold transition-colors group"
+                                        title="Add to enquiry"
+                                    >
+                                        <Plus className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     ))}
@@ -114,6 +135,15 @@ export default function ProductListing({ title, description, benefits, products,
                 </div>
 
             </div>
+
+            {/* Toast Notification */}
+            {toast && (
+                <Toast
+                    productName={toast.productName}
+                    message="Added to enquiry"
+                    onClose={() => setToast(null)}
+                />
+            )}
         </div>
     );
 }

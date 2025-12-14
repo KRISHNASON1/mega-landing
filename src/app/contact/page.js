@@ -1,12 +1,19 @@
 'use client';
 
-import { Suspense, useMemo, useEffect } from 'react';
+import { Suspense, useMemo, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { MapPin, Phone, Mail, Clock, ArrowRight } from 'lucide-react';
 import ContactForm from '@/components/shared/ContactForm';
+import { getCart, getCartCount, formatCartForRequirements } from '@/lib/cart';
 
 function ContactPageContent() {
   const searchParams = useSearchParams();
+  const [cartCount, setCartCount] = useState(0);
+
+  // Update cart count on mount
+  useEffect(() => {
+    setCartCount(getCartCount());
+  }, []);
 
   // Extract and format product enquiry with full details
   const initialRequirements = useMemo(() => {
@@ -14,6 +21,7 @@ function ContactPageContent() {
     const descParam = searchParams.get('desc');
     const specsParam = searchParams.get('specs');
 
+    // Priority 1: Single product enquiry via query params (Enquire Now button)
     if (productParam) {
       let enquiry = 'Enquire On - [\n';
       enquiry += ` - Product: ${productParam}\n`;
@@ -26,6 +34,14 @@ function ContactPageContent() {
       enquiry += ']';
       return enquiry;
     }
+
+    // Priority 2: Cart products (+ button)
+    const cartRequirements = formatCartForRequirements();
+    if (cartRequirements) {
+      return cartRequirements;
+    }
+
+    // Priority 3: Empty
     return '';
   }, [searchParams]);
 
@@ -224,6 +240,18 @@ function ContactPageContent() {
         <div id="quote-form" className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Contact Form Section */}
           <div>
+            {cartCount > 0 && !searchParams.get('product') && (
+              <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                    {cartCount}
+                  </div>
+                  <span className="text-green-800 font-medium">
+                    {cartCount} {cartCount === 1 ? 'product' : 'products'} in your enquiry
+                  </span>
+                </div>
+              </div>
+            )}
             <ContactForm initialRequirements={initialRequirements} />
           </div>
 

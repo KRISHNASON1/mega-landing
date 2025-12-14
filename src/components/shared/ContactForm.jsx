@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { clearCart } from '@/lib/cart';
 
 const ContactForm = ({ initialRequirements = '' }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,6 +45,9 @@ const ContactForm = ({ initialRequirements = '' }) => {
 
       setSubmitStatus('success');
       reset();
+
+      // Clear cart after successful submission
+      clearCart();
 
       // Reset success message after 5 seconds
       setTimeout(() => setSubmitStatus(null), 5000);
