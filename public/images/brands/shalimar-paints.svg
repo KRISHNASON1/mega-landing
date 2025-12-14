@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <defs>
+    <linearGradient id="shalimar-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a5f7a"/>
+      <stop offset="100%" style="stop-color:#2d8bba"/>
+    </linearGradient>
+  </defs>
+  <text x="100" y="35" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="700" fill="url(#shalimar-grad)">SHALIMAR</text>
+  <text x="100" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#c41e3a">PAINTS</text>
+</svg>

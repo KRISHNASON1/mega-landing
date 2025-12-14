@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <defs>
+    <linearGradient id="british-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c8102e"/>
+      <stop offset="50%" style="stop-color:#012169"/>
+      <stop offset="100%" style="stop-color:#c8102e"/>
+    </linearGradient>
+  </defs>
+  <text x="100" y="35" text-anchor="middle" font-family="Times New Roman, serif" font-size="26" font-weight="700" fill="url(#british-grad)">BRITISH</text>
+  <text x="100" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#012169">PAINTS</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <defs>
+    <linearGradient id="europa-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1565c0"/>
+      <stop offset="100%" style="stop-color:#0d47a1"/>
+    </linearGradient>
+  </defs>
+  <circle cx="30" cy="40" r="18" fill="url(#europa-grad)"/>
+  <path d="M22 40 L28 46 L40 32" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="120" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="url(#europa-grad)">EUROPA</text>
+  <text x="120" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#666">LOCKS</text>
+</svg>

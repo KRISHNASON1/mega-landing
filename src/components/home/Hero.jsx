@@ -186,76 +186,71 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Column - Text Content */}
           <div className="text-center lg:text-left">
-          {/* Trust Badge */}
-          <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-white/40 shadow-lg">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-            <span className="text-sm font-medium text-gray-700">GeM Approved Supplier</span>
-          </div>
 
-          {/* Main Title */}
-          <h1
-            ref={titleRef}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
-          >
-            <span className="bg-gradient-to-r from-primary-700 via-primary-600 to-primary-500 bg-clip-text text-transparent">
-              Industrial Excellence
-            </span>
-            <br />
-            <span className="text-gray-900">Delivered</span>
-          </h1>
-
-          {/* Subtitle */}
-          <p
-            ref={subtitleRef}
-            className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto lg:mx-0 leading-relaxed"
-          >
-            Your trusted partner in industrial & project materials.
-            <span className="font-semibold text-primary-700"> 20+ years of excellence</span>,
-            serving <span className="font-semibold text-primary-700">50+ major clients</span> across India.
-          </p>
-
-          {/* CTAs */}
-          <div ref={ctaRef} className="flex flex-col sm:flex-row items-center lg:items-start lg:justify-start justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <Link
-              href="/contact"
-              className="group px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex items-center space-x-2"
+            {/* Main Title */}
+            <h1
+              ref={titleRef}
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
             >
-              <span>Request Quote</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="/products"
-              className="group px-8 py-4 bg-white/60 backdrop-blur-sm text-gray-900 rounded-full font-semibold text-lg border-2 border-gray-200 hover:border-primary-500 hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
-            >
-              <span>View Catalog</span>
-              <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
-            </Link>
-          </div>
+              <span className="bg-gradient-to-r from-primary-700 via-primary-600 to-primary-500 bg-clip-text text-transparent">
+                Industrial Excellence
+              </span>
+              <br />
+              <span className="text-gray-900">Delivered</span>
+            </h1>
 
-          {/* Stats with Glass Effect */}
-          <div className="mt-16 hidden lg:grid grid-cols-2 lg:grid-cols-4 gap-3">
-            {[
-              { value: '20+', label: 'Years Experience' },
-              { value: '50+', label: 'Major Clients' },
-              { value: '1000+', label: 'Products' },
-              { value: 'GeM', label: 'Approved Vendor' },
-            ].map((stat, index) => (
-              <div key={index} className="glass-float">
-                <div className="relative h-20 lg:h-24 rounded-xl backdrop-blur-xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/30 shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
-                  {/* Liquid glass shine effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/5 to-transparent pointer-events-none"></div>
-                  {/* Bottom gradient for depth */}
-                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white/5 to-transparent pointer-events-none"></div>
-                  <div className="relative h-full flex flex-col items-center justify-center p-2 lg:p-3">
-                    <div className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary-700 to-primary-500 bg-clip-text text-transparent mb-1">
-                      {stat.value}
+            {/* Subtitle */}
+            <p
+              ref={subtitleRef}
+              className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto lg:mx-0 leading-relaxed"
+            >
+              Your trusted partner in industrial & project materials.
+              <span className="font-semibold text-primary-700"> 20+ years of excellence</span>,
+              serving <span className="font-semibold text-primary-700">50+ major clients</span> across India.
+            </p>
+
+            {/* CTAs */}
+            <div ref={ctaRef} className="flex flex-col sm:flex-row items-center lg:items-start lg:justify-start justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+              <Link
+                href="/contact"
+                className="group px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex items-center space-x-2"
+              >
+                <span>Request Quote</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="/products"
+                className="group px-8 py-4 bg-white/60 backdrop-blur-sm text-gray-900 rounded-full font-semibold text-lg border-2 border-gray-200 hover:border-primary-500 hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
+              >
+                <span>View Catalog</span>
+                <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              </Link>
+            </div>
+
+            {/* Stats with Glass Effect */}
+            <div className="mt-16 hidden lg:grid grid-cols-2 lg:grid-cols-4 gap-3">
+              {[
+                { value: '20+', label: 'Years Experience' },
+                { value: '50+', label: 'Major Clients' },
+                { value: '1000+', label: 'Products' },
+                { value: 'GeM', label: 'Approved Vendor' },
+              ].map((stat, index) => (
+                <div key={index} className="glass-float">
+                  <div className="relative h-20 lg:h-24 rounded-xl backdrop-blur-xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/30 shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                    {/* Liquid glass shine effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/5 to-transparent pointer-events-none"></div>
+                    {/* Bottom gradient for depth */}
+                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white/5 to-transparent pointer-events-none"></div>
+                    <div className="relative h-full flex flex-col items-center justify-center p-2 lg:p-3">
+                      <div className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary-700 to-primary-500 bg-clip-text text-transparent mb-1">
+                        {stat.value}
+                      </div>
+                      <div className="text-[10px] lg:text-xs text-gray-800 font-semibold text-center leading-tight">{stat.label}</div>
                     </div>
-                    <div className="text-[10px] lg:text-xs text-gray-800 font-semibold text-center leading-tight">{stat.label}</div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
           </div>
 
           {/* Right Column - Animated Images */}
@@ -312,11 +307,10 @@ const Hero = () => {
                 {heroImages.map((_, index) => (
                   <div
                     key={index}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      index === currentImageIndex
+                    className={`h-2 rounded-full transition-all duration-300 ${index === currentImageIndex
                         ? 'w-8 bg-primary-600'
                         : 'w-2 bg-gray-300'
-                    }`}
+                      }`}
                   ></div>
                 ))}
               </div>
@@ -325,12 +319,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-          <div className="w-1.5 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
-        </div>
-      </div>
+
     </section>
   );
 };

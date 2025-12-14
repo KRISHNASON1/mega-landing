@@ -60,7 +60,7 @@ const ContactForm = ({ initialRequirements = '' }) => {
   };
 
   return (
-    <div className="relative max-w-2xl mx-auto rounded-3xl backdrop-blur-xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/30 shadow-xl overflow-hidden">
+    <div className="relative max-w-2xl mx-auto rounded-3xl backdrop-blur-xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/30 shadow-xl overflow-hidden h-full flex flex-col">
       {/* Liquid glass shine effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/5 to-transparent pointer-events-none"></div>
       {/* Bottom gradient for depth */}
@@ -86,9 +86,8 @@ const ContactForm = ({ initialRequirements = '' }) => {
                 required: 'Name is required',
                 minLength: { value: 2, message: 'Name must be at least 2 characters' },
               })}
-              className={`w-full px-4 py-3 rounded-lg border ${
-                errors.name ? 'border-red-500' : 'border-gray-300'
-              } focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white/50`}
+              className={`w-full px-4 py-3 rounded-lg border ${errors.name ? 'border-red-500' : 'border-gray-300'
+                } focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white/50`}
               placeholder="John Doe"
             />
             {errors.name && (
@@ -110,9 +109,8 @@ const ContactForm = ({ initialRequirements = '' }) => {
               {...register('company', {
                 required: 'Company name is required',
               })}
-              className={`w-full px-4 py-3 rounded-lg border ${
-                errors.company ? 'border-red-500' : 'border-gray-300'
-              } focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white/50`}
+              className={`w-full px-4 py-3 rounded-lg border ${errors.company ? 'border-red-500' : 'border-gray-300'
+                } focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white/50`}
               placeholder="Your Company Pvt Ltd"
             />
             {errors.company && (
@@ -139,9 +137,8 @@ const ContactForm = ({ initialRequirements = '' }) => {
                     message: 'Invalid email address',
                   },
                 })}
-                className={`w-full px-4 py-3 rounded-lg border ${
-                  errors.email ? 'border-red-500' : 'border-gray-300'
-                } focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white/50`}
+                className={`w-full px-4 py-3 rounded-lg border ${errors.email ? 'border-red-500' : 'border-gray-300'
+                  } focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white/50`}
                 placeholder="john@company.com"
               />
               {errors.email && (
@@ -166,9 +163,8 @@ const ContactForm = ({ initialRequirements = '' }) => {
                     message: 'Invalid phone number (10 digits)',
                   },
                 })}
-                className={`w-full px-4 py-3 rounded-lg border ${
-                  errors.phone ? 'border-red-500' : 'border-gray-300'
-                } focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white/50`}
+                className={`w-full px-4 py-3 rounded-lg border ${errors.phone ? 'border-red-500' : 'border-gray-300'
+                  } focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white/50`}
                 placeholder="9876543210"
               />
               {errors.phone && (
@@ -192,9 +188,8 @@ const ContactForm = ({ initialRequirements = '' }) => {
                 minLength: { value: 10, message: 'Please provide more details (min 10 characters)' },
               })}
               rows={5}
-              className={`w-full px-4 py-3 rounded-lg border ${
-                errors.requirements ? 'border-red-500' : 'border-gray-300'
-              } focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white/50 resize-none`}
+              className={`w-full px-4 py-3 rounded-lg border ${errors.requirements ? 'border-red-500' : 'border-gray-300'
+                } focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white/50 resize-none`}
               placeholder="Please describe your material requirements, quantities, and any specific details..."
             />
             {errors.requirements && (

@@ -27,10 +27,7 @@ const GeMCompliance = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-green-100 rounded-full px-4 py-2 mb-6">
-            <Shield className="w-5 h-5 text-green-700" />
-            <span className="text-sm font-semibold text-green-700">Government Approved</span>
-          </div>
+
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             GeM Portal Approved & <span className="bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">Government Compliant</span>
           </h2>

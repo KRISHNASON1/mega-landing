@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <defs>
+    <linearGradient id="sharad-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6a1b9a"/>
+      <stop offset="100%" style="stop-color:#9c27b0"/>
+    </linearGradient>
+  </defs>
+  <text x="100" y="38" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="22" font-weight="900" fill="url(#sharad-grad)">SHARAD</text>
+  <text x="100" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#666">CONSTRUCTIONS</text>
+</svg>
