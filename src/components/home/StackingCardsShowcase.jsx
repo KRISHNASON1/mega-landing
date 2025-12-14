@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Package, Zap, Shield, Cpu, Cable, Lightbulb, Wrench, Settings, Box, BrainCircuit, Hammer, BatteryCharging } from 'lucide-react';
@@ -18,6 +18,16 @@ const StackingCardsShowcase = () => {
   const exploreButtonRef = useRef(null);
   const isUnmountingRef = useRef(false);
   const backgroundLinesRef = useRef(null);
+  const mobileBackgroundRef = useRef(null);
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  // Detect mobile viewport
+  useEffect(() => {
+    const checkMobile = () => setIsMobileView(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // 12 products for desktop (4 stacks of 3)
   const products = [
@@ -145,7 +155,7 @@ const StackingCardsShowcase = () => {
     const ctx = gsap.context(() => {
       const isMobile = window.innerWidth < 768;
       const cardsPerStack = isMobile ? 1 : 3;
-      const totalCards = isMobile ? 6 : 12;
+      const totalCards = isMobile ? 8 : 12; // Changed from 6 to 8 for mobile
       const totalStacks = Math.ceil(totalCards / cardsPerStack);
       const stackGap = 25; // 25px vertical gap between stacks
 
@@ -409,7 +419,8 @@ const StackingCardsShowcase = () => {
       });
 
       // Background image scroll animation - synced with card animations
-      if (backgroundLinesRef.current) {
+      // Desktop background
+      if (backgroundLinesRef.current && !isMobile) {
         const img = backgroundLinesRef.current.querySelector('img');
         if (img) {
           // Wait for image to load to get actual height
@@ -453,6 +464,55 @@ const StackingCardsShowcase = () => {
             setupImageAnimation();
           } else {
             img.addEventListener('load', setupImageAnimation);
+          }
+        }
+      }
+
+      // Mobile background - animation for mobileBackground.png
+      // Simplified animation to ensure image is always visible
+      if (mobileBackgroundRef.current) {
+        const mobileImg = mobileBackgroundRef.current.querySelector('img');
+        if (mobileImg && isMobile) {
+          const setupMobileImageAnimation = () => {
+            const imageHeight = mobileImg.naturalHeight || 2000;
+            const imageWidth = mobileImg.naturalWidth || 375;
+            const viewportHeight = window.innerHeight;
+            const viewportWidth = window.innerWidth;
+
+            // Calculate scaled height when image fits viewport width
+            const scaledHeight = (imageHeight / imageWidth) * viewportWidth;
+
+            // How much can we scroll the image (difference between image and viewport)
+            const scrollableDistance = Math.max(0, scaledHeight - viewportHeight);
+
+            // Start with image at top (y: 0), scroll to reveal bottom portions
+            gsap.set(mobileImg, {
+              y: 0,
+              opacity: 1,
+              force3D: true
+            });
+
+            // Animate from y: 0 to y: -scrollableDistance (revealing bottom of image)
+            gsap.timeline({
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top top',
+                end: '+=400%',
+                scrub: 0.5,
+                invalidateOnRefresh: true
+              }
+            }).to(mobileImg, {
+              y: -scrollableDistance,
+              duration: 1,
+              ease: 'none',
+              force3D: true
+            });
+          };
+
+          if (mobileImg.complete && mobileImg.naturalHeight > 0) {
+            setupMobileImageAnimation();
+          } else {
+            mobileImg.addEventListener('load', setupMobileImageAnimation);
           }
         }
       }
@@ -514,7 +574,7 @@ const StackingCardsShowcase = () => {
           if (img) {
             gsap.killTweensOf(img);
             // Remove load event listener if it was added
-            img.removeEventListener('load', () => {});
+            img.removeEventListener('load', () => { });
           }
         } catch (e) {
           // Ignore errors during cleanup
@@ -572,14 +632,28 @@ const StackingCardsShowcase = () => {
         Skip product showcase
       </a>
 
-      {/* Scroll-Synced Background Image */}
+      {/* Scroll-Synced Background Image - Desktop */}
       <div
         ref={backgroundLinesRef}
-        className="absolute inset-0 overflow-hidden pointer-events-none"
+        className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block"
         style={{ backgroundColor: '#f2f5ee' }}
       >
         <img
           src="/background.png"
+          alt=""
+          className="absolute w-full h-auto object-cover"
+          style={{ willChange: 'transform' }}
+        />
+      </div>
+
+      {/* Scroll-Synced Background Image - Mobile */}
+      <div
+        ref={mobileBackgroundRef}
+        className="absolute inset-0 overflow-hidden pointer-events-none md:hidden"
+        style={{ backgroundColor: '#f2f5ee' }}
+      >
+        <img
+          src="/mobileBackground.png"
           alt=""
           className="absolute w-full h-auto object-cover"
           style={{ willChange: 'transform' }}
@@ -603,49 +677,51 @@ const StackingCardsShowcase = () => {
           }}
         >
           {/* Cards */}
-          {products.map((product, index) => (
-            <div
-              key={product.id}
-              ref={(el) => (cardsRefs.current[index] = el)}
-              className="group cursor-pointer absolute inset-0 mx-auto w-full md:w-auto"
-              style={{
-                transformStyle: 'preserve-3d',
-                willChange: 'transform, opacity' // Optimized for both transform and opacity changes
-              }}
-            >
-              <div className="glass-card h-[420px] w-full max-w-md md:max-w-xs mx-auto md:ml-12 rounded-3xl shadow-2xl overflow-hidden">
-                <div className="relative h-full w-full">
-                  {/* Background Image with Parallax */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                    style={{ backgroundImage: `url(${product.image})` }}
-                  >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-60 group-hover:opacity-70 transition-opacity duration-300`}></div>
-                  </div>
+          {products
+            .filter((_, index) => !isMobileView || index < 8) // Only show 8 cards on mobile
+            .map((product, index) => (
+              <div
+                key={product.id}
+                ref={(el) => (cardsRefs.current[index] = el)}
+                className="group cursor-pointer absolute inset-0 mx-auto w-full md:w-auto"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  willChange: 'transform, opacity' // Optimized for both transform and opacity changes
+                }}
+              >
+                <div className="glass-card h-[420px] w-full max-w-md md:max-w-xs mx-auto md:ml-12 rounded-3xl shadow-2xl overflow-hidden">
+                  <div className="relative h-full w-full">
+                    {/* Background Image with Parallax */}
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                      style={{ backgroundImage: `url(${product.image})` }}
+                    >
+                      <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-60 group-hover:opacity-70 transition-opacity duration-300`}></div>
+                    </div>
 
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
 
-                  {/* Content */}
-                  <div className="relative h-full flex flex-col justify-end p-8 text-white">
-                    <div className="transform transition-transform duration-300 group-hover:translate-y-[-4px]">
-                      <h3 className="text-2xl font-bold mb-3">{product.title}</h3>
-                      <p className="text-white/90 mb-4 leading-relaxed">{product.description}</p>
-                      <div className="inline-flex items-center text-sm font-semibold bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 group-hover:bg-white/20 transition-all duration-300">
-                        <span>View Products</span>
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    {/* Content */}
+                    <div className="relative h-full flex flex-col justify-end p-8 text-white">
+                      <div className="transform transition-transform duration-300 group-hover:translate-y-[-4px]">
+                        <h3 className="text-2xl font-bold mb-3">{product.title}</h3>
+                        <p className="text-white/90 mb-4 leading-relaxed">{product.description}</p>
+                        <div className="inline-flex items-center text-sm font-semibold bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 group-hover:bg-white/20 transition-all duration-300">
+                          <span>View Products</span>
+                          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Shine effect on hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                    {/* Shine effect on hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
 
           {/* CTA Button (slides down from top after cards exit) */}
           <div

@@ -233,7 +233,7 @@ const Hero = () => {
           </div>
 
           {/* Stats with Glass Effect */}
-          <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="mt-16 hidden lg:grid grid-cols-2 lg:grid-cols-4 gap-3">
             {[
               { value: '20+', label: 'Years Experience' },
               { value: '50+', label: 'Major Clients' },
@@ -259,8 +259,8 @@ const Hero = () => {
           </div>
 
           {/* Right Column - Animated Images */}
-          <div className="relative hidden lg:block -mt-12">
-            <div className="relative w-full h-[600px]">
+          <div className="relative block mt-8 lg:-mt-12">
+            <div className="relative w-full h-[400px] lg:h-[600px]">
               {/* Decorative Elements */}
               <div className="absolute -top-4 -right-4 w-72 h-72 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
               <div className="absolute -bottom-4 -left-4 w-72 h-72 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
