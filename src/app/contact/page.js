@@ -1,9 +1,21 @@
 'use client';
 
+import { Suspense, useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { MapPin, Phone, Mail, Clock, ArrowRight } from 'lucide-react';
 import ContactForm from '@/components/shared/ContactForm';
 
-export default function ContactPage() {
+function ContactPageContent() {
+  const searchParams = useSearchParams();
+
+  // Extract and format product enquiry
+  const initialRequirements = useMemo(() => {
+    const productParam = searchParams.get('product');
+    if (productParam) {
+      return `Enquire On - [Product: ${productParam}]`;
+    }
+    return '';
+  }, [searchParams]);
   const contactInfo = [
     {
       icon: MapPin,
@@ -187,7 +199,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Contact Form Section */}
           <div>
-            <ContactForm />
+            <ContactForm initialRequirements={initialRequirements} />
           </div>
 
           {/* Alternative Contact Methods */}
@@ -230,5 +242,20 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white pt-32 pb-0 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <ContactPageContent />
+    </Suspense>
   );
 }
