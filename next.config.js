@@ -12,6 +12,8 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
   },
+  // Enable standalone output for Cloud Run deployment
+  output: 'standalone',
 }
 
 module.exports = nextConfig
