@@ -127,10 +127,14 @@ export default function ProductListing({ title, description, benefits, products,
                         <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
                             Get detailed specifications, sizing charts, and complete product range in our downloadable brochure.
                         </p>
-                        <button className="inline-flex items-center px-8 py-4 bg-white text-primary-900 rounded-full font-bold hover:bg-gray-100 transition-colors">
+                        <a
+                            href="/MEGA-Enterprise-Catalog.pdf"
+                            download="MEGA-Enterprise-Catalog.pdf"
+                            className="inline-flex items-center px-8 py-4 bg-white text-primary-900 rounded-full font-bold hover:bg-gray-100 transition-colors"
+                        >
                             <Download className="w-5 h-5 mr-2" />
                             Download PDF
-                        </button>
+                        </a>
                     </div>
                 </div>
 
