@@ -30,114 +30,78 @@ const StackingCardsShowcase = () => {
   }, []);
 
   // 12 products for desktop (4 stacks of 3)
-    const products = [
+        const products = [
     {
       id: 1,
-      title: 'Leather Gloves',
-      description: 'Genuine leather safety gloves for welding, grinding, and heavy material handling operations.',
-      image: '/images/products/safety/safety-gloves/leather-work-gloves-industrial.jpg',
+      title: 'Power & Hand Tools',
+      image: '/images/Products_preview/PowerTools&HandTools.png',
       color: 'from-blue-500 to-blue-700',
-      category: 'Safety',
-      icon: Shield
     },
     {
       id: 2,
-      title: 'Nitrile Gloves',
-      description: 'Chemical-resistant nitrile gloves for handling oils, solvents, and hazardous chemicals.',
-      image: '/images/products/safety/safety-gloves/nitrile-coated-safety-gloves.jpg',
+      title: 'Lugs & Glands',
+      image: '/images/Products_preview/Lugs&Glands.png',
       color: 'from-cyan-500 to-cyan-700',
-      category: 'Safety',
-      icon: Shield
     },
     {
       id: 3,
-      title: 'Safety Goggles',
-      description: 'Splash-proof and chemical-resistant safety goggles for laboratory and industrial environments.',
-      image: '/images/products/safety/eye-protection/safety-goggles-chemical-splash1.jpg',
+      title: 'Switchgears',
+      image: '/images/Products_preview/Switchgears.png',
       color: 'from-yellow-500 to-yellow-700',
-      category: 'Safety',
-      icon: Lightbulb
     },
     {
       id: 4,
-      title: 'Welding Helmet',
-      description: 'Auto-darkening welding helmets for arc welding with adjustable shade and sensitivity.',
-      image: '/images/products/safety/eye-protection/welding-goggles-dark-lens.jpg',
+      title: 'Tarpaulin',
+      image: '/images/Products_preview/Tarpaulin.png',
       color: 'from-red-500 to-red-700',
-      category: 'Safety',
-      icon: Zap
     },
     {
       id: 5,
-      title: 'Fire Extinguisher',
-      description: 'ABC dry powder, CO2, foam, and clean agent fire extinguishers for all fire classes.',
-      image: '/images/products/safety/fire-safety/fire-hose-reel-cabinet.jpg',
+      title: 'Nuts, Bolts & Fasteners',
+      image: '/images/Products_preview/NutsBolts&Fasteners.png',
       color: 'from-orange-500 to-orange-700',
-      category: 'Safety',
-      icon: Settings
     },
     {
       id: 6,
-      title: 'Smoke Detector',
-      description: 'Optical and ionization smoke detectors for early fire warning in commercial and residential properties.',
-      image: '/images/products/safety/fire-safety/fire-alarm-system-smoke-detector1.jpg',
+      title: 'Waterproofing',
+      image: '/images/Products_preview/waterProofing.png',
       color: 'from-purple-500 to-purple-700',
-      category: 'Safety',
-      icon: Zap
     },
     {
       id: 7,
-      title: 'Traffic Cone',
-      description: 'Reflective PVC traffic cones for road diversions, construction zones, and parking management.',
-      image: '/images/products/safety/road-safety/traffic-safety-cone-orange.jpg',
+      title: 'Wood Coating',
+      image: '/images/Products_preview/woodPainting.png',
       color: 'from-orange-400 to-orange-600',
-      category: 'Safety',
-      icon: Package
     },
     {
       id: 8,
-      title: 'Road Barrier',
-      description: 'Water-filled and concrete road barriers for highway construction zones and traffic management.',
-      image: '/images/products/safety/road-safety/road-safety-barrier-plastic.jpg',
+      title: 'TMT Bars',
+      image: '/images/Products_preview/TMTBars.png',
       color: 'from-red-600 to-red-800',
-      category: 'Safety',
-      icon: Box
     },
     {
       id: 9,
-      title: 'Kevlar Gloves',
-      description: 'Cut-resistant Kevlar gloves for glass handling, metalworking, and sharp-edge applications.',
-      image: '/images/products/safety/safety-gloves/kevlar-heat-resistant-gloves.jpg',
+      title: 'Fall Protection',
+      image: '/images/Products_preview/FallProtection.png',
       color: 'from-yellow-600 to-amber-800',
-      category: 'Safety',
-      icon: Shield
     },
     {
       id: 10,
-      title: 'Face Shield',
-      description: 'Full-face protective shields for grinding, cutting, and chemical splash protection.',
-      image: '/images/products/safety/eye-protection/face-shield-full-protection.jpg',
+      title: 'Earth Moving Equipment',
+      image: '/images/Products_preview/EarthMovingEquipment.png',
       color: 'from-indigo-500 to-indigo-700',
-      category: 'Safety',
-      icon: Shield
     },
     {
       id: 11,
-      title: 'Fire Blanket',
-      description: 'Fire-resistant blankets for smothering small fires and protecting persons during evacuation.',
-      image: '/images/products/safety/fire-safety/fire-blanket-safety.jpg',
+      title: 'CPVC Pipes & Fittings',
+      image: '/images/Products_preview/CPVCPipes&Fittings.png',
       color: 'from-pink-500 to-pink-700',
-      category: 'Safety',
-      icon: Package
     },
     {
       id: 12,
-      title: 'Speed Breaker',
-      description: 'Rubber and plastic speed breakers for speed control in parking lots and residential areas.',
-      image: '/images/products/safety/road-safety/speed-breaker-rubber.jpg',
+      title: 'Flanges & Gaskets',
+      image: '/images/Products_preview/Flanges&Gaskets.png',
       color: 'from-gray-600 to-gray-800',
-      category: 'Safety',
-      icon: Wrench
     }
   ];
 
@@ -682,7 +646,7 @@ const StackingCardsShowcase = () => {
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                       style={{ backgroundImage: `url(${product.image})` }}
                     >
-                      <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-60 group-hover:opacity-70 transition-opacity duration-300`}></div>
+                      <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-30 group-hover:opacity-40 transition-opacity duration-300`}></div>
                     </div>
 
                     {/* Gradient Overlay */}
@@ -692,7 +656,7 @@ const StackingCardsShowcase = () => {
                     <div className="relative h-full flex flex-col justify-end p-8 text-white">
                       <div className="transform transition-transform duration-300 group-hover:translate-y-[-4px]">
                         <h3 className="text-2xl font-bold mb-3">{product.title}</h3>
-                        <p className="text-white/90 mb-4 leading-relaxed">{product.description}</p>
+                        
                         <div className="inline-flex items-center text-sm font-semibold bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 group-hover:bg-white/20 transition-all duration-300">
                           <span>View Products</span>
                           <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
