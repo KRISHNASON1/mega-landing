@@ -228,9 +228,8 @@ const Hero = () => {
             </div>
 
             {/* Stats with Glass Effect */}
-            <div className="mt-16 hidden lg:grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="mt-16 hidden lg:grid grid-cols-2 lg:grid-cols-3 gap-3">
               {[
-                { value: '20+', label: 'Years Experience' },
                 { value: '50+', label: 'Major Clients' },
                 { value: '1000+', label: 'Products' },
                 { value: 'GeM', label: 'Approved Vendor' },

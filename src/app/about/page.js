@@ -48,7 +48,7 @@ export default function AboutPage() {
           </h1>
           {/* Subtitle */}
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed relative z-10 mb-16">
-            With over 20 years of excellence, we're your trusted partner in industrial and project materials supply,
+            We're your trusted partner in industrial and project materials supply,
             serving government PSUs, infrastructure giants, and private enterprises across India.
           </p>
 
@@ -108,9 +108,8 @@ export default function AboutPage() {
               </svg>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 relative max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-0 relative max-w-6xl mx-auto">
               {[
-                { value: '20+', label: 'Years Experience', icon: Award, offset: 'translate-y-0', delay: '0.1s' },
                 { value: '50+', label: 'Major Clients', icon: Users, offset: 'md:translate-y-12', delay: '0.2s' },
                 { value: '1000+', label: 'Products', icon: Building2, offset: 'md:translate-y-2', delay: '0.3s' },
                 { value: '20+', label: 'Brand Partners', icon: TrendingUp, offset: 'translate-y-0', delay: '0.4s' },
