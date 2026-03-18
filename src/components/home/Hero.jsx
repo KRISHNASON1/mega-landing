@@ -190,10 +190,10 @@ const Hero = () => {
             {/* Main Title */}
             <h1
               ref={titleRef}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+              className="text-5xl md:text-7xl lg:text-7xl font-bold mb-6 leading-tight"
             >
               <span className="bg-gradient-to-r from-primary-700 via-primary-600 to-primary-500 bg-clip-text text-transparent">
-                Industrial Excellence
+                Premium Project Materials
               </span>
               <br />
               <span className="text-gray-900">Delivered</span>
