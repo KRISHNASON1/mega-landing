@@ -5,25 +5,25 @@ export default function StreetLightingPage() {
         {
             name: 'LED Street Light',
             description: 'Energy-efficient street lights for roads and public areas.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['30W to 250W', 'IP66 Rating', 'Type II/III Distribution'],
         },
         {
             name: 'Solar Street Light',
             description: 'Integrated solar LED street lights with lithium battery.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['All-in-One', 'Motion Sensor', 'Dusk to Dawn'],
         },
         {
             name: 'Post Top Light',
             description: 'Decorative pole-mounted lights for gardens and pathways.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['E27/E40 Base', 'Aluminum Body', 'Decorative Design'],
         },
         {
             name: 'Area Light',
             description: 'Large area lighting fixtures for parking lots and campuses.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['150W to 400W', 'Pole Mount', 'Wide Coverage'],
         },
     ];

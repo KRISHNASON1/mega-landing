@@ -5,25 +5,25 @@ export default function TerminalBlocksPage() {
         {
             name: 'Screw Type Terminal Block',
             description: 'Standard DIN rail mounted screw clamp terminal blocks.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['2.5 to 240 sq.mm', 'Grey/Blue/Green-Yellow', 'Touch Safe'],
         },
         {
             name: 'Spring Clamp Terminal',
             description: 'Tool-free spring loaded terminal blocks for quick wiring.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Push-In Type', 'Vibration Proof', 'Compact Size'],
         },
         {
             name: 'Fuse Terminal Block',
             description: 'Terminal blocks with integrated fuse holder for circuit protection.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['5x20mm Fuse', 'LED Indication', 'Easy Fuse Change'],
         },
         {
             name: 'Disconnect Terminal',
             description: 'Knife disconnect terminals for easy circuit testing and isolation.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Knife Blade', 'Test Point', 'Multiple Levels'],
         },
     ];

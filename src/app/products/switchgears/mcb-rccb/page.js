@@ -5,25 +5,25 @@ export default function McbRccbPage() {
         {
             name: 'Single Pole MCB',
             description: 'Miniature circuit breakers for single phase protection in distribution boards.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['6A to 63A Rating', 'B/C/D Curve', '10kA Breaking Capacity'],
         },
         {
             name: 'TP+N MCB',
             description: 'Three pole plus neutral MCBs for three-phase applications.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['4 Module Width', 'DIN Rail Mount', 'IS/IEC 60898'],
         },
         {
             name: 'RCCB',
             description: 'Residual current circuit breakers for earth leakage protection.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['30mA/100mA/300mA', '2P/4P Versions', 'Type A/AC'],
         },
         {
             name: 'RCBO',
             description: 'Combined MCB and RCCB in single unit for comprehensive protection.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Overcurrent + Earth Fault', 'Compact Design', 'Individual Protection'],
         },
     ];

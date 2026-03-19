@@ -5,25 +5,25 @@ export default function MccbAcbPage() {
         {
             name: 'MCCB (Moulded Case)',
             description: 'Moulded case circuit breakers for higher current applications up to 1600A.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['16A to 1600A', 'Thermal-Magnetic Trip', 'Adjustable Settings'],
         },
         {
             name: 'Electronic MCCB',
             description: 'MCCBs with electronic trip units for precise protection settings.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Microprocessor Based', 'LCD Display', 'Communication Ready'],
         },
         {
             name: 'Air Circuit Breaker',
             description: 'ACBs for main incoming and high current distribution applications.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['800A to 6300A', 'Drawout Type', '65kA/85kA Icu'],
         },
         {
             name: 'Motor Protection MCCB',
             description: 'MCCBs with motor protection characteristics for direct motor connection.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['I²t Protection', '13x Magnetic Trip', 'Rotary Handle Option'],
         },
     ];

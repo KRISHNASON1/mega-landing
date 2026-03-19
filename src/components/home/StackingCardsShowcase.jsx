@@ -36,72 +36,84 @@ const StackingCardsShowcase = () => {
       title: 'Power & Hand Tools',
       image: '/images/Products_preview/PowerTools&HandTools.png',
       color: 'from-blue-500 to-blue-700',
+      link: '/products/hardware/power-hand-tools'
     },
     {
       id: 2,
       title: 'Lugs & Glands',
       image: '/images/Products_preview/Lugs&Glands.png',
       color: 'from-cyan-500 to-cyan-700',
+      link: '/products/electrical/lugs-glands'
     },
     {
       id: 3,
       title: 'Switchgears',
       image: '/images/Products_preview/Switchgears.png',
       color: 'from-yellow-500 to-yellow-700',
+      link: '/products/electrical/switchgears'
     },
     {
       id: 4,
       title: 'Tarpaulin',
       image: '/images/Products_preview/Tarpaulin.png',
       color: 'from-red-500 to-red-700',
+      link: '/products/hardware/tarpaulin'
     },
     {
       id: 5,
       title: 'Nuts, Bolts & Fasteners',
       image: '/images/Products_preview/NutsBolts&Fasteners.png',
       color: 'from-orange-500 to-orange-700',
+      link: '/products/hardware/fasteners'
     },
     {
       id: 6,
       title: 'Waterproofing',
       image: '/images/Products_preview/waterProofing.png',
       color: 'from-purple-500 to-purple-700',
+      link: '/products/construction-chemicals/waterproofing'
     },
     {
       id: 7,
       title: 'Wood Coating',
       image: '/images/Products_preview/woodPainting.png',
       color: 'from-orange-400 to-orange-600',
+      link: '/products/construction-chemicals/wood-coatings'
     },
     {
       id: 8,
       title: 'TMT Bars',
       image: '/images/Products_preview/TMTBars.png',
       color: 'from-red-600 to-red-800',
+      link: '/products/structural-steel/tmt-bars'
     },
     {
       id: 9,
       title: 'Fall Protection',
       image: '/images/Products_preview/FallProtection.png',
       color: 'from-yellow-600 to-amber-800',
+      link: '/products/safety-ppe/fall-protection'
     },
     {
       id: 10,
       title: 'Earth Moving Equipment',
       image: '/images/Products_preview/EarthMovingEquipment.png',
       color: 'from-indigo-500 to-indigo-700',
+      link: '/products/construction-equipment/earth-moving'
     },
     {
       id: 11,
       title: 'CPVC Pipes & Fittings',
       image: '/images/Products_preview/CPVCPipes&Fittings.png',
       color: 'from-pink-500 to-pink-700',
+      link: '/products/pipes-fittings/cpvc'
     },
     {
       id: 12,
       title: 'Flanges & Gaskets',
       image: '/images/Products_preview/Flanges&Gaskets.png',
       color: 'from-gray-600 to-gray-800',
+      link: '/products/pipes-fittings/flanges-gaskets'
     }
   ];
 
@@ -633,13 +645,13 @@ const StackingCardsShowcase = () => {
               <div
                 key={product.id}
                 ref={(el) => (cardsRefs.current[index] = el)}
-                className="group cursor-pointer absolute inset-0 mx-auto w-full md:w-auto"
+                className="group absolute inset-0 mx-auto w-full md:w-auto"
                 style={{
                   transformStyle: 'preserve-3d',
                   willChange: 'transform, opacity' // Optimized for both transform and opacity changes
                 }}
               >
-                <div className="glass-card h-[420px] w-full max-w-md md:max-w-xs mx-auto md:ml-12 rounded-3xl shadow-2xl overflow-hidden">
+                <a href={product.link} className="glass-card block cursor-pointer h-[420px] w-full max-w-md md:max-w-xs mx-auto md:ml-12 rounded-3xl shadow-2xl overflow-hidden">
                   <div className="relative h-full w-full">
                     {/* Background Image with Parallax */}
                     <div
@@ -669,7 +681,7 @@ const StackingCardsShowcase = () => {
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             ))}
 

@@ -5,19 +5,19 @@ export default function BevelHelicalGearboxPage() {
         {
             name: 'Right Angle Bevel Helical',
             description: 'Bevel-helical gear units for right-angle power transmission.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['90° Output', 'High Efficiency', 'Heavy Duty'],
         },
         {
             name: 'Bevel Planetary Gearbox',
             description: 'Combined bevel and planetary stages for very high torque applications.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Extreme Torque', 'Compact Size', 'Industrial Grade'],
         },
         {
             name: 'Agitator Drive Gearbox',
             description: 'Specialized gearboxes for mixer and agitator applications.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Axial Load Capacity', 'Thrust Bearing', 'Seal Options'],
         },
     ];
