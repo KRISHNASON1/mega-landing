@@ -5,14 +5,14 @@ import { ArrowLeft, Phone, CheckCircle2, Wrench, Settings, Factory } from 'lucid
 
 /* ───────── Dummy images per project ───────── */
 const DUMMY_IMAGES = {
-    1: 'https://placehold.co/900x400/4A628A/DFF2EB?text=OHE+Outriggers+–+Railway',
-    2: 'https://placehold.co/900x400/3A4F6F/DFF2EB?text=Industrial+Shed+–+EOT+Crane',
-    3: 'https://placehold.co/900x400/4A628A/DFF2EB?text=HVAC+Frames+–+Cold+Chain',
-    4: 'https://placehold.co/900x400/3A4F6F/DFF2EB?text=SS304+Contra+Mixer',
-    5: 'https://placehold.co/900x400/4A628A/DFF2EB?text=Portable+Office+Cabins',
-    6: 'https://placehold.co/900x400/3A4F6F/DFF2EB?text=Porta+Cabins+–+MMRDA',
-    7: 'https://placehold.co/900x400/4A628A/DFF2EB?text=Base+Plate+Assemblies',
-    8: 'https://placehold.co/900x400/3A4F6F/DFF2EB?text=Anchor+Bolt+Assemblies',
+    1: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=900&h=400&fit=crop',
+    2: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&h=400&fit=crop',
+    3: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=900&h=400&fit=crop',
+    4: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=900&h=400&fit=crop',
+    5: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=900&h=400&fit=crop',
+    6: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&h=400&fit=crop&crop=bottom',
+    7: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=900&h=400&fit=crop',
+    8: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=900&h=400&fit=crop',
 };
 
 /* ───────── Dummy Image Block ───────── */
@@ -28,13 +28,8 @@ const ProjectImage = ({ id }) => (
 function ProjectArticle({ project }) {
     return (
         <article className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-            {/* Image */}
-            <div className="p-6 sm:p-8 pb-0 sm:pb-0">
-                <ProjectImage id={project.id} />
-            </div>
-
             {/* Content */}
-            <div className="p-6 sm:p-10 pt-6 sm:pt-8">
+            <div className="p-6 sm:p-10">
                 {/* Title Row */}
                 <div className="flex items-start gap-4 mb-6">
                     <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary-50 text-primary-700 font-bold text-lg shrink-0 mt-1">
@@ -51,6 +46,11 @@ function ProjectArticle({ project }) {
                         Project Description
                     </h3>
                     <p className="text-gray-700 leading-relaxed text-[15px]">{project.description}</p>
+                </div>
+
+                {/* Image */}
+                <div className="mb-8">
+                    <ProjectImage id={project.id} />
                 </div>
 
                 {/* Materials */}

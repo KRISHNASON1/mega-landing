@@ -6,12 +6,13 @@ import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'luc
 
 const Footer = () => {
   const productCategories = [
-    'Cables & Wires',
-    'Electrical Switchgear',
-    'LED Lighting',
-    'Pipes & Fittings',
-    'Safety Equipment',
-    'Paints & Coatings',
+    { name: 'Electrical', href: '/products#electrical' },
+    { name: 'Hardware', href: '/products#hardware' },
+    { name: 'Construction Chemicals & Paints', href: '/products#construction-chemicals' },
+    { name: 'Structural Steel', href: '/products#structural-steel' },
+    { name: 'Safety', href: '/products#safety' },
+    { name: 'Construction Equipment', href: '/products#construction-equipment' },
+    { name: 'Pipes, Pipe Fittings & Valves', href: '/products#pipes-fittings' },
   ];
 
   const quickLinks = [
@@ -99,13 +100,13 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold mb-6">Product Categories</h4>
               <ul className="space-y-3">
-                {productCategories.slice(0, 6).map((category) => (
-                  <li key={category}>
+                {productCategories.map((category) => (
+                  <li key={category.name}>
                     <Link
-                      href="/products"
+                      href={category.href}
                       className="text-gray-400 hover:text-primary-500 transition-colors duration-200"
                     >
-                      {category}
+                      {category.name}
                     </Link>
                   </li>
                 ))}
@@ -150,13 +151,13 @@ const Footer = () => {
           <div className="hidden lg:block lg:order-4">
             <h4 className="text-lg font-semibold mb-6">Product Categories</h4>
             <ul className="space-y-3">
-              {productCategories.slice(0, 6).map((category) => (
-                <li key={category}>
+              {productCategories.map((category) => (
+                <li key={category.name}>
                   <Link
-                    href="/products"
+                    href={category.href}
                     className="text-gray-400 hover:text-primary-500 transition-colors duration-200"
                   >
-                    {category}
+                    {category.name}
                   </Link>
                 </li>
               ))}

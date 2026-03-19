@@ -26,15 +26,13 @@ const Navbar = () => {
     }, [pathname]);
 
     const productCategories = [
-        { name: 'Safety & PPE', href: '/products/safety-ppe', icon: <Shield className="w-4 h-4" /> },
-        { name: 'Wires & Cables', href: '/products/wires-cables', icon: <Zap className="w-4 h-4" /> },
-        { name: 'Switchgears', href: '/products/switchgears', icon: <Power className="w-4 h-4" /> },
-        { name: 'Motors', href: '/products/motors', icon: <Settings className="w-4 h-4" /> },
-        { name: 'Gearboxes', href: '/products/gearboxes', icon: <Settings className="w-4 h-4" /> },
-        { name: 'Solar', href: '/products/solar', icon: <Sun className="w-4 h-4" /> },
-        { name: 'Lighting', href: '/products/lighting', icon: <Lightbulb className="w-4 h-4" /> },
-        { name: 'Panel Accessories', href: '/products/panel-accessories', icon: <PenTool className="w-4 h-4" /> },
-        { name: 'Lubricants', href: '/products/lubricants', icon: <Droplet className="w-4 h-4" /> },
+        { name: 'Electrical', href: '/products#electrical', icon: <Zap className="w-4 h-4" /> },
+        { name: 'Hardware', href: '/products#hardware', icon: <Wrench className="w-4 h-4" /> },
+        { name: 'Construction Chemicals & Paints', href: '/products#construction-chemicals', icon: <Droplet className="w-4 h-4" /> },
+        { name: 'Structural Steel', href: '/products#structural-steel', icon: <Settings className="w-4 h-4" /> },
+        { name: 'Safety', href: '/products#safety', icon: <Shield className="w-4 h-4" /> },
+        { name: 'Construction Equipment', href: '/products#construction-equipment', icon: <Hammer className="w-4 h-4" /> },
+        { name: 'Pipes, Pipe Fittings & Valves', href: '/products#pipes-fittings', icon: <PenTool className="w-4 h-4" /> },
     ];
 
     const services = [

@@ -6,6 +6,7 @@ import { ChevronRight, Hammer, Wrench } from 'lucide-react';
 export default function ProductsPage() {
   const categories = [
     {
+      id: 'electrical',
       name: 'Electrical',
       subcategories: [
         { name: 'Wires & Cables', href: '/products/electrical/wires-cables', image: '/images/Products_preview/Wires&Cables.png' },
@@ -19,6 +20,7 @@ export default function ProductsPage() {
       ],
     },
     {
+      id: 'hardware',
       name: 'Hardware',
       subcategories: [
         { name: 'Power Tools & Hand Tools', href: '/products/hardware/power-hand-tools', image: '/images/Products_preview/PowerTools&HandTools.png' },
@@ -31,6 +33,7 @@ export default function ProductsPage() {
       ],
     },
     {
+      id: 'construction-chemicals',
       name: 'Construction Chemicals & Paints',
       subcategories: [
         { name: 'Waterproofing', href: '/products/construction-chemicals/waterproofing', image: '/images/Products_preview/waterProofing.png' },
@@ -43,6 +46,7 @@ export default function ProductsPage() {
       ],
     },
     {
+      id: 'structural-steel',
       name: 'Structural Steel',
       subcategories: [
         { name: 'TMT Bars', href: '/products/structural-steel/tmt-bars', image: '/images/Products_preview/TMTBars.png' },
@@ -55,6 +59,7 @@ export default function ProductsPage() {
       ],
     },
     {
+      id: 'safety',
       name: 'Safety',
       subcategories: [
         { name: 'Safety Gloves', href: '/products/safety/safety-gloves', image: '/images/Products_preview/SafetyGloves.png' },
@@ -67,6 +72,7 @@ export default function ProductsPage() {
       ],
     },
     {
+      id: 'construction-equipment',
       name: 'Construction Equipment',
       subcategories: [
         { name: 'Concrete Mixers', href: '/products/construction-equipment/concrete-mixers', image: '/images/Products_preview/ConcreteMixers.png' },
@@ -80,6 +86,7 @@ export default function ProductsPage() {
       ],
     },
     {
+      id: 'pipes-fittings',
       name: 'Pipes, Pipe Fittings & Valves',
       subcategories: [
         { name: 'PVC Pipes & Fittings', href: '/products/pipes-fittings/pvc', image: '/images/Products_preview/PVCPipes&Fittings.png' },
@@ -133,7 +140,7 @@ export default function ProductsPage() {
 
           <div className="space-y-16">
             {categories.map((category, catIndex) => (
-              <div key={catIndex}>
+              <div key={catIndex} id={category.id} className="scroll-mt-32">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-1.5 h-8 bg-primary-600 rounded-full"></div>
                   <h3 className="text-2xl font-bold text-gray-900">{category.name}</h3>
