@@ -5,14 +5,14 @@ import { ArrowLeft, Phone, CheckCircle2, Wrench, Settings, Factory } from 'lucid
 
 /* ───────── Dummy images per project ───────── */
 const DUMMY_IMAGES = {
-    1: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=900&h=400&fit=crop',
-    2: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&h=400&fit=crop',
-    3: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=900&h=400&fit=crop',
-    4: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=900&h=400&fit=crop',
-    5: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=900&h=400&fit=crop',
-    6: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&h=400&fit=crop&crop=bottom',
-    7: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=900&h=400&fit=crop',
-    8: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=900&h=400&fit=crop',
+    1: '/images/projects/fabrication-1.png',
+    2: '/images/projects/fabrication-2.png',
+    3: '/images/projects/fabrication-3.png',
+    4: '/images/projects/fabrication-4.png',
+    5: '/images/projects/fabrication-5.png',
+    6: '/images/projects/fabrication-6.png',
+    7: '/images/projects/fabrication-7.png',
+    8: '/images/projects/fabrication-8.png',
 };
 
 /* ───────── Dummy Image Block ───────── */
