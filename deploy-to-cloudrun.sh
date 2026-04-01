@@ -19,7 +19,7 @@ set -euo pipefail
 
 # ------------- CONFIGURATION (Edit these values) -------------
 PROJECT_ID=""                          # Your GCP Project ID (e.g., "mega-enterprise-12345")
-REGION="asia-south1"                   # GCP Region (Mumbai - closest to India)
+REGION="asia-southeast1"               # GCP Region (Singapore - supports custom domains)
 SERVICE_NAME="mega-enterprise-landing" # Cloud Run service name
 IMAGE_NAME="mega-enterprise-landing"   # Docker image name
 

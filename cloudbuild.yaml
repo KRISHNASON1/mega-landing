@@ -53,7 +53,7 @@ steps:
 
 # Substitution variables (defaults, can be overridden)
 substitutions:
-  _REGION: 'asia-south1'
+  _REGION: 'asia-southeast1'
   _SMTP_HOST: 'smtpout.secureserver.net'
   _SMTP_PORT: '465'
   _SMTP_SECURE: 'true'
