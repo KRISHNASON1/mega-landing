@@ -60,12 +60,12 @@ if ! command -v gcloud &> /dev/null; then
 fi
 success "gcloud CLI found"
 
-# Check if Docker is installed
-if ! command -v docker &> /dev/null; then
-    warning "Docker not found locally. Will use Cloud Build for building."
+# Check if Docker is installed and running
+if ! command -v docker &> /dev/null || ! docker info &> /dev/null; then
+    warning "Docker is not running locally or not installed. Will use Cloud Build for building."
     USE_CLOUD_BUILD=true
 else
-    success "Docker found"
+    success "Docker is running"
     USE_CLOUD_BUILD=false
 fi
 
