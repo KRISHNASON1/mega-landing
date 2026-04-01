@@ -25,7 +25,8 @@ const nextConfig = {
       },
     ]
   },
-  // Note: No 'output: standalone' needed — Vercel handles Next.js natively
+  // Enable standalone output for Cloud Run deployment
+  output: 'standalone',
 }
 
 module.exports = nextConfig
