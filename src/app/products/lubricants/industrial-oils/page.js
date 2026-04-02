@@ -5,25 +5,25 @@ export default function IndustrialOilsPage() {
         {
             name: 'Hydraulic Oil',
             description: 'Premium anti-wear hydraulic fluids for industrial hydraulic systems.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['ISO VG 32/46/68', 'Anti-Wear Additives', 'High VI Index'],
         },
         {
             name: 'Gear Oil',
             description: 'EP gear oils for enclosed gear drives and gearboxes.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['ISO VG 220/320/460', 'Extreme Pressure', 'Synthetic Options'],
         },
         {
             name: 'Compressor Oil',
             description: 'Specialized oils for air and refrigeration compressors.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Reciprocating/Rotary', 'High Oxidation Stability', 'Long Drain'],
         },
         {
             name: 'Turbine Oil',
             description: 'Premium turbine oils for steam and gas turbine lubrication.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['R&O Inhibited', 'Excellent Demulsibility', 'Long Life'],
         },
     ];

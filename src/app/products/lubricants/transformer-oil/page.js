@@ -5,19 +5,19 @@ export default function TransformerOilPage() {
         {
             name: 'Uninhibited Transformer Oil',
             description: 'High-grade mineral insulating oil for power transformers.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['IS 335 Grade', 'High BDV', 'Low Pour Point'],
         },
         {
             name: 'Inhibited Transformer Oil',
             description: 'Oxidation-inhibited oils for extended transformer life.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['IEC 60296', 'Antioxidant Added', 'Longer Life'],
         },
         {
             name: 'Synthetic Ester Oil',
             description: 'Biodegradable synthetic esters for eco-sensitive installations.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Fire Resistant', 'Biodegradable', 'High Flash Point'],
         },
     ];

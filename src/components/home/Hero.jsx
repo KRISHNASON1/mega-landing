@@ -190,10 +190,10 @@ const Hero = () => {
             {/* Main Title */}
             <h1
               ref={titleRef}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+              className="text-5xl md:text-7xl lg:text-7xl font-bold mb-6 leading-tight"
             >
               <span className="bg-gradient-to-r from-primary-700 via-primary-600 to-primary-500 bg-clip-text text-transparent">
-                Industrial Excellence
+                Premium Project Materials
               </span>
               <br />
               <span className="text-gray-900">Delivered</span>
@@ -228,9 +228,8 @@ const Hero = () => {
             </div>
 
             {/* Stats with Glass Effect */}
-            <div className="mt-16 hidden lg:grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="mt-16 hidden lg:grid grid-cols-2 lg:grid-cols-3 gap-3">
               {[
-                { value: '20+', label: 'Years Experience' },
                 { value: '50+', label: 'Major Clients' },
                 { value: '1000+', label: 'Products' },
                 { value: 'GeM', label: 'Approved Vendor' },

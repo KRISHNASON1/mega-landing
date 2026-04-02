@@ -5,19 +5,19 @@ export default function SubmersibleMotorsPage() {
         {
             name: 'Water Filled Submersible Motor',
             description: 'Submersible motors with water lubrication for borewell applications.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['1HP to 100HP', 'Deep Well', 'Stainless Steel'],
         },
         {
             name: 'Oil Filled Submersible Motor',
             description: 'Oil-cooled submersible motors for industrial pump applications.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['High Efficiency', 'Longer Life', 'Heavy Duty'],
         },
         {
             name: 'Sewage Submersible Motor',
             description: 'Motors designed for sewage and effluent pump applications.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Non-Clog Design', 'Cast Iron Body', 'IP68 Protection'],
         },
     ];

@@ -5,25 +5,25 @@ export default function SurgeProtectionPage() {
         {
             name: 'Type 1 SPD',
             description: 'Lightning current arresters for main distribution board protection.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['25kA/50kA Imp', 'Class I Test', 'Outdoor Rated'],
         },
         {
             name: 'Type 2 SPD',
             description: 'Surge arresters for sub-distribution and equipment protection.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['20kA/40kA In', 'Remote Signaling', 'Pluggable Modules'],
         },
         {
             name: 'Type 3 SPD',
             description: 'Fine protection devices installed close to sensitive equipment.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Socket Outlet Type', 'Compact Design', 'LED Indication'],
         },
         {
             name: 'Data Line SPD',
             description: 'Surge protection for communication lines, Ethernet, and coaxial cables.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['RJ45/Coax/RS485', 'PoE Compatible', 'Fast Response'],
         },
     ];

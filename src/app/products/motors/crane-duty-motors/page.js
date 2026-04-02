@@ -5,19 +5,19 @@ export default function CraneDutyMotorsPage() {
         {
             name: 'Squirrel Cage Crane Motor',
             description: 'High slip motors designed for crane travel and hoist applications.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['S3/S4 Duty', 'High Starting Torque', 'Frequent Starts'],
         },
         {
             name: 'Slip Ring Crane Motor',
             description: 'Wound rotor motors for precise speed and torque control in cranes.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Resistance Starting', 'Speed Control', 'Heavy Duty'],
         },
         {
             name: 'Flame Proof Crane Motor',
             description: 'Explosion-proof crane motors for hazardous environments.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Ex Rated', 'ATEX Certified', 'Crane Duty Class'],
         },
     ];

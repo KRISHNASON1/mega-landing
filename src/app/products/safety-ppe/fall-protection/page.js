@@ -5,25 +5,25 @@ export default function FallProtectionPage() {
         {
             name: 'Full Body Harness',
             description: 'Ergonomic full body harness with dorsal D-ring and adjustable thigh straps for work at height.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop', // Construction worker high up
+            image: '/images/Products_preview/Abrasives.png', // Construction worker high up
             specs: ['EN 361 Certified', 'Dual Color Webbing', 'Corrosion Resistant Fittings'],
         },
         {
             name: 'Double Lanyard with Absorber',
             description: 'Twin-leg twisted rope lanyard with energy absorber to limit impact force during a fall.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop', // Rope/gear
+            image: '/images/Products_preview/Abrasives.png', // Rope/gear
             specs: ['EN 355 Compliant', 'Scaffold Hooks', 'Shock Absorption < 6kN'],
         },
         {
             name: 'Retractable Fall Arrester',
             description: 'Self-retracting lifeline (SRL) with galvanized wire rope for vertical mobility and instant locking.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop', // Industrial gear
+            image: '/images/Products_preview/Abrasives.png', // Industrial gear
             specs: ['10m - 30m Length options', 'Swivel Snap Hook', 'High Impact Casing'],
         },
         {
             name: 'Safety Nets',
             description: 'Heavy duty knotted safety nets for personnel safety and debris containment at construction sites.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop', // Building construction
+            image: '/images/Products_preview/Abrasives.png', // Building construction
             specs: ['High Tenacity Polypropylene', 'UV Stabilized', 'Border Rope Reinforced'],
         },
     ];

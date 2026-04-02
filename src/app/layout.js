@@ -14,13 +14,13 @@ const inter = Inter({
 
 export const metadata = {
   title: 'MEGA Enterprise - Industrial Materials Supplier | GeM Approved',
-  description: 'Authorized supplier of electrical, safety & industrial materials. 20+ years experience, GeM approved, serving 50+ major clients across India. Get instant quotes.',
+  description: 'Authorized supplier of electrical, safety & industrial materials. GeM approved, serving 50+ major clients across India. Get instant quotes.',
   keywords: 'industrial materials, electrical supplier, GeM approved vendor, cables, LED lighting, safety equipment, Navi Mumbai, TATA, Siemens, Polycab',
   authors: [{ name: 'MEGA Enterprise' }],
   manifest: '/manifest.json',
   openGraph: {
     title: 'MEGA Enterprise - Your Trusted Industrial Partner',
-    description: 'GeM approved supplier with 20+ years of excellence in industrial materials',
+    description: 'GeM approved supplier of excellence in industrial materials',
     type: 'website',
     locale: 'en_IN',
     siteName: 'MEGA Enterprise',
@@ -28,7 +28,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'MEGA Enterprise - Industrial Materials Supplier',
-    description: 'GeM approved supplier with 20+ years experience',
+    description: 'GeM approved supplier',
   },
   robots: {
     index: true,

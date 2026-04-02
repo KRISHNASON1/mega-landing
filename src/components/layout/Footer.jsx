@@ -54,7 +54,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="hidden lg:block text-gray-400 mb-4 leading-relaxed">
-              Your trusted partner in industrial & project materials with 20+ years of excellence.
+              Your trusted partner in industrial & project materials.
             </p>
             {/* GST Number Badge */}
             <div className="mb-6 inline-flex items-center px-3 py-1.5 bg-white/10 rounded-lg border border-white/20">

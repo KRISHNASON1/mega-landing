@@ -5,25 +5,25 @@ export default function RoadSafetyPage() {
         {
             name: 'Traffic Cones',
             description: 'Flexible PVC traffic cones with UV stabilization and reflective sleeves.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop', // Traffic cone
+            image: '/images/Products_preview/Abrasives.png', // Traffic cone
             specs: ['750mm Height', 'Heavy Weighted Base', 'High Visibility Orange'],
         },
         {
             name: 'Convex Mirrors',
             description: 'Polycarbonate convex mirrors for eliminating blind spots in parking and roads.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop', // Mirror reflection
+            image: '/images/Products_preview/Abrasives.png', // Mirror reflection
             specs: ['130 Degree View', 'Unbreakable Lens', 'Weather Proof'],
         },
         {
             name: 'Speed Bumps',
             description: 'Modular rubber speed breakers for traffic calming in residential and industrial zones.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop', // Road
+            image: '/images/Products_preview/Abrasives.png', // Road
             specs: ['Heavy Duty Rubber', 'Cat Eyes Embedded', 'Easy Installation'],
         },
         {
             name: 'Barricade Tape',
             description: 'Caution and Danger barricade tapes for cordoning off hazardous areas.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop', // Caution tape
+            image: '/images/Products_preview/Abrasives.png', // Caution tape
             specs: ['High Strength PE', 'Red/White or Black/Yellow', '300m Rolls'],
         },
     ];

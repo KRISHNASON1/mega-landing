@@ -17,7 +17,6 @@ const ClientsShowcase = () => {
     { name: 'Leighton India', logo: '/images/clients/images (3).png' },
     { name: 'Coastal Marine', logo: '/images/clients/images (4).png' },
     { name: 'B G Shirke', logo: '/images/clients/images (5).png' },
-    { name: 'Rubberwala Housing', logo: '/images/clients/images (3).jpeg' },
   ];
 
   // Row 2 - scrolls right to left (opposite direction)
@@ -25,12 +24,7 @@ const ClientsShowcase = () => {
     { name: 'Sunteck Realty', logo: '/images/clients/images1.png' },
     { name: 'Shrim Bhanu Construction', logo: '/images/clients/images (11).jpeg' },
     { name: 'Glass Wall Systems', logo: '/images/clients/20210623234529.jpg' },
-    { name: 'Ganesh Benzoplast', logo: '/images/clients/logo.jpg' },
-    { name: 'Suasth Health Care', logo: '/images/clients/suasth_hospital_logo.jpeg' },
-    { name: 'Multistoreys Projects', logo: '/images/clients/multi_storeys_projects_private_limited_logo.jpeg' },
-    { name: 'Futech Projects', logo: '/images/clients/futechindia_logo.jpeg' },
     { name: 'Shelke Constructions', logo: '/images/clients/images (22).jpeg' },
-    { name: 'Sharad Constructions', logo: '/images/clients/images (13).png' },
     { name: 'Bearys Properties', logo: '/images/clients/1745992853528.jpeg' },
   ];
 

@@ -65,7 +65,7 @@ export default function ProductListing({ title, description, benefits, products,
                         <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
                             <div className={`h-64 overflow-hidden relative flex items-center justify-center ${fitImages || product.fitImage ? 'bg-white' : 'bg-gray-100'}`}>
                                 <img
-                                    src={product.image || 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80'}
+                                    src={product.image || '/images/Products_preview/PowerTools&HandTools.png'}
                                     alt={product.name}
                                     className={`w-full h-full ${fitImages || product.fitImage ? 'object-contain group-hover:scale-125' : 'object-cover group-hover:scale-110'} transition-transform duration-500`}
                                 />
@@ -127,10 +127,14 @@ export default function ProductListing({ title, description, benefits, products,
                         <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
                             Get detailed specifications, sizing charts, and complete product range in our downloadable brochure.
                         </p>
-                        <button className="inline-flex items-center px-8 py-4 bg-white text-primary-900 rounded-full font-bold hover:bg-gray-100 transition-colors">
+                        <a
+                            href="/MEGA-Enterprise-Catalog.pdf"
+                            download="MEGA-Enterprise-Catalog.pdf"
+                            className="inline-flex items-center px-8 py-4 bg-white text-primary-900 rounded-full font-bold hover:bg-gray-100 transition-colors"
+                        >
                             <Download className="w-5 h-5 mr-2" />
                             Download PDF
-                        </button>
+                        </a>
                     </div>
                 </div>
 

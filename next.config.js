@@ -12,6 +12,19 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
   },
+  async headers() {
+    return [
+      {
+        source: '/MEGA-Enterprise-Catalog.pdf',
+        headers: [
+          {
+            key: 'Content-Disposition',
+            value: 'attachment; filename="MEGA-Enterprise-Catalog.pdf"',
+          },
+        ],
+      },
+    ]
+  },
   // Enable standalone output for Cloud Run deployment
   output: 'standalone',
 }

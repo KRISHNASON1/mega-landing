@@ -5,19 +5,19 @@ export default function HelicalGearboxPage() {
         {
             name: 'Inline Helical Gearbox',
             description: 'Coaxial helical gear reducers with input and output on same axis.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['High Efficiency >96%', 'Hardened Gears', 'IEC Motor Adapter'],
         },
         {
             name: 'Parallel Shaft Helical Gearbox',
             description: 'Offset helical gearboxes with parallel input and output shafts.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Multiple Stages', 'High Torque', 'Foot/Flange Mount'],
         },
         {
             name: 'Shaft Mounted Helical Gearbox',
             description: 'Direct shaft mounting reducers for conveyor applications.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['No Foundation', 'Torque Arm', 'Easy Installation'],
         },
     ];

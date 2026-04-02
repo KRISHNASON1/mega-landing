@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 export default function WelcomeScreen() {
     const [isVisible, setIsVisible] = useState(true);
     const [isFading, setIsFading] = useState(false);
     const [shouldRender, setShouldRender] = useState(true);
+    const hasStartedDismiss = useRef(false);
 
     useEffect(() => {
         // Check if the welcome screen has already been shown in this session
@@ -18,33 +19,48 @@ export default function WelcomeScreen() {
             return;
         }
 
-        // Mark the welcome screen as shown
+        // Mark the welcome screen as shown immediately
         sessionStorage.setItem('welcomeScreenShown', 'true');
 
-        // Wait for the page to fully load, then start fade out
-        const handleLoad = () => {
-            // Add a small delay after load for a smooth experience
+        // Dismiss function — only runs once
+        const startDismiss = () => {
+            if (hasStartedDismiss.current) return;
+            hasStartedDismiss.current = true;
+
             const fadeTimer = setTimeout(() => {
                 setIsFading(true);
-                // Remove from DOM after fade animation completes
                 const removeTimer = setTimeout(() => {
                     setIsVisible(false);
                     setShouldRender(false);
-                }, 800); // Match this with CSS transition duration
+                }, 800);
 
                 return () => clearTimeout(removeTimer);
-            }, 1200); // Show the welcome screen for 1.2 seconds after load
+            }, 1200);
 
             return () => clearTimeout(fadeTimer);
         };
 
-        // Check if the document is already loaded
+        // Guaranteed fallback — never stay visible longer than 3 seconds
+        // This catches edge cases where 'load' never fires (SPA navigation, back button, etc.)
+        const maxTimeout = setTimeout(() => {
+            startDismiss();
+        }, 3000);
+
+        // Primary trigger — page load event
+        const handleLoad = () => {
+            startDismiss();
+        };
+
         if (document.readyState === 'complete') {
             handleLoad();
         } else {
             window.addEventListener('load', handleLoad);
-            return () => window.removeEventListener('load', handleLoad);
         }
+
+        return () => {
+            clearTimeout(maxTimeout);
+            window.removeEventListener('load', handleLoad);
+        };
     }, []);
 
     // Don't render anything if it should not be shown

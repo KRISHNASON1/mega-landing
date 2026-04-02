@@ -5,25 +5,25 @@ export default function StartersDrivesPage() {
         {
             name: 'DOL Starter',
             description: 'Direct-on-line starters for small motor starting applications.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Up to 7.5kW', 'Integrated Overload', 'Sheet Steel Enclosure'],
         },
         {
             name: 'Star-Delta Starter',
             description: 'Reduced voltage starters for larger motors to limit starting current.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['7.5kW to 150kW', 'Auto Transition', 'Timer Controlled'],
         },
         {
             name: 'Soft Starter',
             description: 'Electronic soft starters for smooth motor acceleration and deceleration.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Thyristor Based', 'Programmable Ramp', 'Built-in Bypass'],
         },
         {
             name: 'VFD / VSD',
             description: 'Variable frequency drives for precise speed control and energy savings.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['0.37kW to 500kW', 'V/F & Vector Control', 'Modbus/Profibus'],
         },
     ];

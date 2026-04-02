@@ -1,0 +1,14 @@
+.git
+.agents
+.claude
+.next
+node_modules
+server.log
+server.pid
+deploy-to-cloudrun.sh
+cloudbuild.yaml
+SETUP_GUIDE.md
+QUICK_START.md
+README.md
+*.md
+!vercel.json

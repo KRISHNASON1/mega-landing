@@ -5,25 +5,25 @@ export default function CommunicationCablesPage() {
         {
             name: 'LAN Cable (Cat5e/Cat6)',
             description: 'High-speed ethernet cables for networking and data centers.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['Cat5e/Cat6/Cat6a', 'UTP/STP Options', '1Gbps to 10Gbps'],
         },
         {
             name: 'Coaxial Cable',
             description: 'RF cables for CCTV, cable TV, and antenna installations.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['RG6/RG11/RG59', '75 Ohm Impedance', 'Low Loss'],
         },
         {
             name: 'Telephone Cable',
             description: 'Multi-pair cables for EPABX and telephone installations.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['2 to 100 Pairs', 'Jelly Filled', 'Armoured Options'],
         },
         {
             name: 'Fiber Optic Cable',
             description: 'Single mode and multi-mode optical fiber for high-bandwidth communication.',
-            image: 'https://images.unsplash.com/photo-1581092334241-cb19ecef850f?w=600&h=600&fit=crop',
+            image: '/images/Products_preview/Abrasives.png',
             specs: ['SM/MM Fiber', '6 to 96 Core', 'Aerial/Duct Type'],
         },
     ];

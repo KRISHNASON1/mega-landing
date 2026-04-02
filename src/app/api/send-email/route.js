@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { transporter } from '@/lib/nodemailer';
+import { getTransporter } from '@/lib/nodemailer';
 import { generateEmailHTML, generatePlainTextEmail } from '@/lib/email-template';
 import { generateCustomerConfirmationHTML, generateCustomerConfirmationPlainText } from '@/lib/customer-confirmation-template';
 
@@ -68,10 +68,24 @@ export async function POST(request) {
       html: customerHtmlContent,
     };
 
+    const transporter = getTransporter();
+
+    // Helper function to reliably await email sending in serverless environments
+    const sendMailPromise = (mailOptions) => 
+      new Promise((resolve, reject) => {
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(info);
+          }
+        });
+      });
+
     // Send both emails
     await Promise.all([
-      transporter.sendMail(adminMailOptions),
-      transporter.sendMail(customerMailOptions)
+      sendMailPromise(adminMailOptions),
+      sendMailPromise(customerMailOptions)
     ]);
 
     // Return success response
