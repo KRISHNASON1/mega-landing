@@ -6,8 +6,8 @@ import { ArrowLeft, Phone, CheckCircle2, Wrench, Settings, Factory } from 'lucid
 /* ───────── Dummy images per project ───────── */
 const DUMMY_IMAGES = {
     1: '/images/projects/fabrication-1.png',
-    2: '/images/projects/fabrication-2.png',
-    3: '/images/projects/fabrication-3.png',
+    2: '/images/projects/fabrication-2.jpg',
+    3: '/images/projects/fabrication-3.jpg',
     4: '/images/projects/fabrication-4.png',
     5: '/images/projects/fabrication-5.png',
     6: '/images/projects/fabrication-6.png',

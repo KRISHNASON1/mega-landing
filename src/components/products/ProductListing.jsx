@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowLeft, Check, Download, Phone, Plus } from 'lucide-react';
 import { addToCart } from '@/lib/cart';
 import Toast from '@/components/shared/Toast';
+import Image from 'next/image';
 
 export default function ProductListing({ title, description, benefits, products, categoryBackLink, fitImages = false }) {
     const [toast, setToast] = useState(null);
@@ -64,10 +65,11 @@ export default function ProductListing({ title, description, benefits, products,
                     {products.map((product, index) => (
                         <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
                             <div className={`h-64 overflow-hidden relative flex items-center justify-center ${fitImages || product.fitImage ? 'bg-white' : 'bg-gray-100'}`}>
-                                <img
+                                <Image
                                     src={product.image || '/images/Products_preview/PowerTools&HandTools.png'}
-                                    alt={product.name}
-                                    className={`w-full h-full ${fitImages || product.fitImage ? 'object-contain group-hover:scale-125' : 'object-cover group-hover:scale-110'} transition-transform duration-500`}
+                                    alt={`${product.name} - industrial fabrication and engineering component`}
+                                    fill
+                                    className={`${fitImages || product.fitImage ? 'object-contain group-hover:scale-125' : 'object-cover group-hover:scale-110'} transition-transform duration-500`}
                                 />
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
                             </div>

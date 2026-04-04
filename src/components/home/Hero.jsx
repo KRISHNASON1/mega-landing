@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Play } from 'lucide-react';
 import { gsap } from 'gsap';
 
@@ -15,10 +16,10 @@ const Hero = () => {
 
   // Array of images to cycle through - place your images in public/images/hero/
   const heroImages = [
-    '/images/hero/1.png',
-    '/images/hero/2.png',
-    '/images/hero/3.png',
-    '/images/hero/4.png',
+    { src: '/images/hero/1.png', alt: 'Premium industrial materials and electrical components for MEGA Enterprise projects' },
+    { src: '/images/hero/2.png', alt: 'GeM approved heavy structural steel and engineering supplies' },
+    { src: '/images/hero/3.png', alt: 'High quality safety PPE kits and factory automation equipment' },
+    { src: '/images/hero/4.png', alt: 'Specialized industrial fabrication tools and power machinery' },
   ];
 
   useEffect(() => {
@@ -189,6 +190,7 @@ const Hero = () => {
 
             {/* Main Title */}
             <h1
+              id="hero-headline"
               ref={titleRef}
               className="text-5xl md:text-7xl lg:text-7xl font-bold mb-6 leading-tight"
             >
@@ -272,10 +274,12 @@ const Hero = () => {
                   >
                     <div className="relative w-full h-full flex items-center justify-center">
                       {/* Clean Image Display */}
-                      <img
-                        src={image}
-                        alt={`Hero showcase ${index + 1}`}
-                        className="w-full h-full object-contain"
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        priority={index === 0}
+                        className="object-contain"
                       />
                     </div>
                   </div>

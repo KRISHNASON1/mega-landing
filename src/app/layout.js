@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 import GSAPCleanup from '@/components/utils/GSAPCleanup';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import SmoothScroll from '@/components/utils/SmoothScroll';
+import { OrganizationSchema, SpeakableSchema } from '@/components/SchemaMarkup';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -13,11 +14,15 @@ const inter = Inter({
 });
 
 export const metadata = {
+  metadataBase: new URL('https://megaenterprise.in'),
   title: 'MEGA Enterprise - Industrial Materials Supplier | GeM Approved',
   description: 'Authorized supplier of electrical, safety & industrial materials. GeM approved, serving 50+ major clients across India. Get instant quotes.',
-  keywords: 'industrial materials, electrical supplier, GeM approved vendor, cables, LED lighting, safety equipment, Navi Mumbai, TATA, Siemens, Polycab',
+  keywords: 'industrial materials, electrical supplier, GeM approved vendor, cables, LED lighting, safety equipment, Navi Mumbai, TATA, Siemens, Polycab, B2B fabrication, industrial engineering, structural steel, Taloja MIDC industrial supplier, Maharashtra engineering materials, factory automation, power tools, heavy machinery supplies',
   authors: [{ name: 'MEGA Enterprise' }],
   manifest: '/manifest.json',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'MEGA Enterprise - Your Trusted Industrial Partner',
     description: 'GeM approved supplier of excellence in industrial materials',
@@ -46,6 +51,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.variable} font-sans`}>
+        <OrganizationSchema />
+        <SpeakableSchema />
         <SmoothScroll />
         <WelcomeScreen />
         <GSAPCleanup />
