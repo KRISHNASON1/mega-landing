@@ -1,7 +1,6 @@
 'use client';
 
 import { CheckCircle2, Shield, Award, FileCheck } from 'lucide-react';
-import GlassSurface from '../ui/GlassSurface';
 
 const GeMCompliance = () => {
   const certifications = [
@@ -93,33 +92,7 @@ const GeMCompliance = () => {
           </div>
         </div>
 
-        {/* CTA with Glass Effect */}
-        <div className="mt-12 flex justify-center">
-          <div className="relative group cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-105">
-            <GlassSurface
-              width={280}
-              height={56}
-              borderRadius={28}
-              brightness={85}
-              opacity={0.6}
-              blur={15}
-              displace={2}
-              className="shadow-xl group-hover:shadow-2xl transition-shadow duration-300"
-            >
-              <a
-                href="https://gem.gov.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center space-x-2 w-full h-full text-gray-900 font-semibold text-lg"
-              >
-                <Shield className="w-5 h-5" />
-                <span>View GeM Profile</span>
-              </a>
-            </GlassSurface>
-            {/* Enhanced glow effect on hover */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-400/0 via-primary-400/0 to-green-400/0 group-hover:from-green-400/30 group-hover:via-primary-400/40 group-hover:to-green-400/30 blur-xl transition-all duration-300 -z-10 pointer-events-none"></div>
-          </div>
-        </div>
+
       </div>
     </section>
   );

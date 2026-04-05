@@ -65,26 +65,28 @@ const Navbar = () => {
             const scrolled = window.scrollY > 50;
             if (scrolled !== isScrolled) {
                 setIsScrolled(scrolled);
-                if (scrolled) {
+                // Only auto-close dropdown on scroll for desktop hover behavior
+                // On mobile, the user explicitly tapped to open it, so don't close on scroll
+                if (scrolled && !isMobileView) {
                     setIsProductsDropdownOpen(false);
                 }
             }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [isScrolled]);
+    }, [isScrolled, isMobileView]);
 
-    // Update dropdown position when button is hovered
+    // Update dropdown position when button is hovered (desktop only)
     useEffect(() => {
-        if (isProductsDropdownOpen && productsButtonRef.current) {
+        if (isProductsDropdownOpen && productsButtonRef.current && !isMobileView) {
             const rect = productsButtonRef.current.getBoundingClientRect();
             setDropdownPosition({
                 top: rect.bottom + 20,
                 left: rect.left - 100,
             });
         }
-    }, [isProductsDropdownOpen]);
+    }, [isProductsDropdownOpen, isMobileView]);
 
     // Keyboard handling and scroll lock for mobile menu
     useEffect(() => {
@@ -154,15 +156,13 @@ const Navbar = () => {
 
                 <div
                     className="fixed z-[9999] animate-in fade-in slide-in-from-top-2 duration-200"
-                    style={{
+                    style={isMobileView ? {
+                        top: '5rem',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                    } : {
                         top: dropdownPosition.top,
                         left: dropdownPosition.left,
-                        // Mobile: centered positioning
-                        ...(typeof window !== 'undefined' && window.innerWidth < 1024 && {
-                            top: '5rem',
-                            left: '50%',
-                            transform: 'translateX(-50%)'
-                        })
                     }}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
@@ -398,8 +398,13 @@ const Navbar = () => {
                                 <button
                                     onClick={(e) => {
                                         e.preventDefault();
+                                        e.stopPropagation();
                                         setIsMobileMenuOpen(false);
-                                        setIsProductsDropdownOpen(true);
+                                        // Delay opening dropdown to let mobile menu scroll-lock cleanup finish
+                                        // Without this, the body scroll position restoration fires a scroll event
+                                        setTimeout(() => {
+                                            setIsProductsDropdownOpen(true);
+                                        }, 150);
                                     }}
                                     className="block w-full text-left text-sm font-semibold text-gray-900 hover:text-primary-600 transition-colors py-2.5 px-3 rounded-lg hover:bg-white/40 active:scale-[0.98] flex items-center justify-between"
                                 >
