@@ -18,12 +18,23 @@ export default function SmoothScroll() {
         const isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
 
         if (isMobile) {
-            // On mobile, just scroll to top on route change and refresh ScrollTrigger
+            // On mobile, force scroll to top on route change
+            // Multiple attempts needed because GSAP pin cleanup and DOM updates can delay layout
             window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+
             requestAnimationFrame(() => {
+                window.scrollTo(0, 0);
                 ScrollTrigger.refresh();
             });
-            return;
+
+            // Delayed scroll-to-top to handle GSAP cleanup restoring scroll position
+            const timer = setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 100);
+
+            return () => clearTimeout(timer);
         }
 
         const lenis = new Lenis({

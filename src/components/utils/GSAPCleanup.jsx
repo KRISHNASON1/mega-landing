@@ -111,9 +111,13 @@ const GSAPCleanup = () => {
             // Allow cleanup to complete, then navigate using Next.js router
             setTimeout(() => {
               router.push(targetUrl.pathname + targetUrl.search + targetUrl.hash);
+              // Scroll to top after navigation
+              window.scrollTo(0, 0);
+              document.documentElement.scrollTop = 0;
               // Reset flag after navigation
               setTimeout(() => {
                 isNavigatingRef.current = false;
+                window.scrollTo(0, 0);
               }, 100);
             }, 50);
           }
