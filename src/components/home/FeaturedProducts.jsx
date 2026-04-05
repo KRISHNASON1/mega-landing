@@ -58,6 +58,7 @@ const FeaturedProducts = () => {
   useEffect(() => {
     if (typeof window === 'undefined' || !sectionRef.current) return;
 
+    const isMobile = window.innerWidth < 768;
     let scrollTriggerInstances = [];
 
     const ctx = gsap.context(() => {
@@ -69,7 +70,7 @@ const FeaturedProducts = () => {
           end: 'top 50%',
           scrub: 1,
         },
-        y: 50,
+        y: isMobile ? 25 : 50,
         opacity: 0,
       });
 
@@ -83,12 +84,12 @@ const FeaturedProducts = () => {
 
         const isEven = index % 2 === 0;
 
-        // Initial state
+        // Initial state — simpler on mobile (no 3D rotation)
         gsap.set(card, {
           scale: 0.9,
           opacity: 0,
-          rotationY: isEven ? -15 : 15,
-          z: -100 * index,
+          rotationY: isMobile ? 0 : (isEven ? -15 : 15),
+          z: isMobile ? 0 : -100 * index,
         });
 
         // Scroll animation with stacking effect
@@ -115,42 +116,44 @@ const FeaturedProducts = () => {
           ease: 'power3.out',
         });
 
-        // Parallax effect on hover
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const rotateX = (y - centerY) / 20;
-          const rotateY = (centerX - x) / 20;
+        // Parallax effect on hover — DESKTOP ONLY (mousemove listeners cause overhead on touch)
+        if (!isMobile) {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
 
-          gsap.to(card, {
-            rotationX: rotateX,
-            rotationY: rotateY,
-            duration: 0.5,
-            ease: 'power2.out',
+            gsap.to(card, {
+              rotationX: rotateX,
+              rotationY: rotateY,
+              duration: 0.5,
+              ease: 'power2.out',
+            });
           });
-        });
 
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, {
-            rotationX: 0,
-            rotationY: 0,
-            duration: 0.5,
-            ease: 'power2.out',
+          card.addEventListener('mouseleave', () => {
+            gsap.to(card, {
+              rotationX: 0,
+              rotationY: 0,
+              duration: 0.5,
+              ease: 'power2.out',
+            });
           });
-        });
 
-        // Floating animation for each card
-        gsap.to(card, {
-          y: -10,
-          duration: 2 + index * 0.2,
-          ease: 'sine.inOut',
-          yoyo: true,
-          repeat: -1,
-          delay: index * 0.1,
-        });
+          // Floating animation for each card — DESKTOP ONLY
+          gsap.to(card, {
+            y: -10,
+            duration: 2 + index * 0.2,
+            ease: 'sine.inOut',
+            yoyo: true,
+            repeat: -1,
+            delay: index * 0.1,
+          });
+        }
       });
     }, sectionRef);
 
@@ -176,8 +179,8 @@ const FeaturedProducts = () => {
 
   return (
     <section ref={sectionRef} className="relative pt-[98px] md:pt-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Animated Background — hidden on mobile */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
         <div className="absolute top-1/4 -left-48 w-96 h-96 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
         <div className="absolute top-1/2 -right-48 w-96 h-96 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" style={{ animationDelay: '2s' }}></div>
       </div>

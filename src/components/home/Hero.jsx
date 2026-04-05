@@ -23,62 +23,66 @@ const Hero = () => {
   ];
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+
     const ctx = gsap.context(() => {
       // Initial animation timeline
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
       tl.from(titleRef.current, {
-        y: 100,
+        y: isMobile ? 40 : 100,
         opacity: 0,
-        duration: 1,
+        duration: isMobile ? 0.6 : 1,
         delay: 0.2,
       })
         .from(
           subtitleRef.current,
           {
-            y: 50,
+            y: isMobile ? 25 : 50,
             opacity: 0,
-            duration: 0.8,
+            duration: isMobile ? 0.5 : 0.8,
           },
           '-=0.5'
         )
         .from(
           ctaRef.current,
           {
-            y: 30,
+            y: isMobile ? 15 : 30,
             opacity: 0,
-            duration: 0.8,
+            duration: isMobile ? 0.5 : 0.8,
           },
           '-=0.5'
         );
 
-      // Floating animation for glass cards
-      gsap.to('.glass-float', {
-        y: -20,
-        duration: 3,
-        ease: 'power1.inOut',
-        yoyo: true,
-        repeat: -1,
-        stagger: 0.5,
-      });
+      // Floating animation for glass cards — skip on mobile for performance
+      if (!isMobile) {
+        gsap.to('.glass-float', {
+          y: -20,
+          duration: 3,
+          ease: 'power1.inOut',
+          yoyo: true,
+          repeat: -1,
+          stagger: 0.5,
+        });
 
-      // Animation for wavy lines
-      gsap.to('.wavy-line-1', {
-        attr: { d: 'M0,100 C30,50 50,90 100,0' },
-        duration: 10,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1,
-      });
+        // Animation for wavy lines — skip on mobile
+        gsap.to('.wavy-line-1', {
+          attr: { d: 'M0,100 C30,50 50,90 100,0' },
+          duration: 10,
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1,
+        });
 
-      gsap.to('.wavy-line-2', {
-        attr: { d: 'M0,100 C40,95 60,70 100,30' },
-        duration: 8,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1,
-        delay: 1,
-      });
+        gsap.to('.wavy-line-2', {
+          attr: { d: 'M0,100 C40,95 60,70 100,30' },
+          duration: 8,
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1,
+          delay: 1,
+        });
+      }
 
       // Initial setup for images - hide all except first
       imagesRef.current.forEach((img, index) => {
@@ -158,8 +162,8 @@ const Hero = () => {
       ref={heroRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100"
     >
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Animated Background Elements — hidden on mobile for performance */}
+      <div className="absolute inset-0 overflow-hidden hidden md:block">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" style={{ animationDelay: '2s' }}></div>
         <div className="absolute bottom-20 left-1/4 w-72 h-72 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" style={{ animationDelay: '4s' }}></div>
@@ -257,9 +261,9 @@ const Hero = () => {
           {/* Right Column - Animated Images */}
           <div className="relative block -mt-12 lg:-mt-12">
             <div className="relative w-full h-[300px] lg:h-[600px]">
-              {/* Decorative Elements */}
-              <div className="absolute -top-4 -right-4 w-72 h-72 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-              <div className="absolute -bottom-4 -left-4 w-72 h-72 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
+              {/* Decorative Elements — hidden on mobile */}
+              <div className="hidden md:block absolute -top-4 -right-4 w-72 h-72 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+              <div className="hidden md:block absolute -bottom-4 -left-4 w-72 h-72 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
 
               {/* Image Container with Stacked Effect */}
               <div className="relative w-full h-full flex items-center justify-center">

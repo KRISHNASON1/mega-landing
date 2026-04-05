@@ -14,6 +14,18 @@ export default function SmoothScroll() {
     const pathname = usePathname();
 
     useEffect(() => {
+        // Disable Lenis entirely on mobile/touch devices — native scroll is smoother
+        const isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
+
+        if (isMobile) {
+            // On mobile, just scroll to top on route change and refresh ScrollTrigger
+            window.scrollTo(0, 0);
+            requestAnimationFrame(() => {
+                ScrollTrigger.refresh();
+            });
+            return;
+        }
+
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

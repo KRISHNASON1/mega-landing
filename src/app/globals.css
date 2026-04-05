@@ -128,19 +128,29 @@
 /* Prevent horizontal scroll jank — lets Lenis work cleanly */
 body {
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Scroll reveal animation — blur-in + slide-up on intersection */
 .reveal {
   opacity: 0;
-  filter: blur(5px);
   transform: translateY(20px);
-  transition: all 0.8s ease-out;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Only use blur transition on desktop — it causes full GPU repaint on mobile */
+@media (min-width: 768px) {
+  .reveal {
+    filter: blur(5px);
+    transition: all 0.8s ease-out;
+  }
+  .reveal.visible {
+    filter: blur(0);
+  }
 }
 
 .reveal.visible {
   opacity: 1;
-  filter: blur(0);
   transform: translateY(0);
 }
 
@@ -184,17 +194,23 @@ body {
   background: linear-gradient(135deg,
       rgba(255, 255, 255, 0.15) 0%,
       rgba(255, 255, 255, 0.08) 100%);
-  backdrop-filter: blur(12px) saturate(1.2) brightness(0.98);
-  -webkit-backdrop-filter: blur(12px) saturate(1.2) brightness(0.98);
   box-shadow:
     0 8px 32px 0 rgba(31, 38, 135, 0.2),
     0 4px 16px 0 rgba(31, 38, 135, 0.15),
     inset 0 1px 2px 0 rgba(255, 255, 255, 0.4),
     inset 0 -1px 2px 0 rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  will-change: transform, opacity;
+  will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
+}
+
+/* Only apply backdrop-filter on desktop — it's GPU-heavy on mobile */
+@media (min-width: 768px) {
+  .glass-card {
+    backdrop-filter: blur(12px) saturate(1.2) brightness(0.98);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2) brightness(0.98);
+  }
 }
 
 /* Add frosted overlay effect */

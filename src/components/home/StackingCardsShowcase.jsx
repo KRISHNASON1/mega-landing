@@ -125,10 +125,11 @@ const StackingCardsShowcase = () => {
 
     let scrollTriggerInstance = null;
 
+    const isMobile = window.innerWidth < 768;
+
     const ctx = gsap.context(() => {
-      const isMobile = window.innerWidth < 768;
       const cardsPerStack = isMobile ? 1 : 3;
-      const totalCards = isMobile ? 8 : 12; // Changed from 6 to 8 for mobile
+      const totalCards = isMobile ? 8 : 12;
       const totalStacks = Math.ceil(totalCards / cardsPerStack);
       const stackGap = 25; // 25px vertical gap between stacks
 
@@ -158,7 +159,7 @@ const StackingCardsShowcase = () => {
           scale: 1,
           zIndex: stackNumber === 0 ? 100 : index,
           transformOrigin: 'center center',
-          force3D: true // Ensures GPU acceleration
+          force3D: true
         });
       });
 
@@ -167,27 +168,27 @@ const StackingCardsShowcase = () => {
         y: -window.innerHeight,
         opacity: 0,
         scale: 0.9,
-        force3D: true // Ensures GPU acceleration
+        force3D: true
       });
 
       // Create master timeline with ScrollTrigger
-      // Optimized for smooth scrolling performance
+      // Mobile: reduced scroll length and simpler scrub for smoother performance
       const masterTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           pin: true,
-          scrub: 0.5, // Reduced from 1 to 0.5 for smoother interpolation
+          scrub: isMobile ? 1 : 0.5, // Higher scrub value on mobile = less frequent updates = smoother
           start: 'top top',
-          end: '+=400%', // Reduced from 500% to 400% for better performance
+          end: isMobile ? '+=300%' : '+=400%', // Shorter scroll distance on mobile
           anticipatePin: 1,
           invalidateOnRefresh: true,
           pinSpacing: true,
-          fastScrollEnd: true, // Prevents animation lag on fast scrolls
+          fastScrollEnd: true,
           onRefresh: (self) => {
             scrollTriggerInstance = self;
           }
         },
-        smoothChildTiming: true // Smooths child animation timing
+        smoothChildTiming: true
       });
 
       // Store the ScrollTrigger instance
@@ -224,8 +225,8 @@ const StackingCardsShowcase = () => {
                 scale: 1 - stackLevel * 0.08,
                 zIndex: prevStackIndex,
                 duration: 1,
-                ease: 'none', // Changed from 'power2.inOut' for smoother scrubbing
-                force3D: true // Ensures GPU acceleration
+                ease: 'none',
+                force3D: true
               },
               label
             );
@@ -257,8 +258,8 @@ const StackingCardsShowcase = () => {
               scale: 1,
               zIndex: 100,
               duration: 1,
-              ease: 'none', // Changed from 'power2.out' for smoother scrubbing
-              force3D: true // Ensures GPU acceleration
+              ease: 'none',
+              force3D: true
             },
             label
           );
@@ -274,9 +275,9 @@ const StackingCardsShowcase = () => {
         {
           y: -window.innerHeight,
           duration: 1,
-          ease: 'none', // Changed from 'power2.in' for smoother scrubbing
+          ease: 'none',
           stagger: 0.03,
-          force3D: true // Ensures GPU acceleration
+          force3D: true
         },
         exitLabel
       );
@@ -295,11 +296,13 @@ const StackingCardsShowcase = () => {
           opacity: 1,
           scale: 1,
           duration: 0.8,
-          ease: 'back.out(1.7)', // Spring effect for excitement
-          force3D: true, // Ensures GPU acceleration
+          ease: isMobile ? 'power2.out' : 'back.out(1.7)', // Simpler easing on mobile
+          force3D: true,
           onComplete: () => {
-            // Exciting animations when button finishes animating
-            if (!isUnmountingRef.current && exploreButtonRef.current) {
+            // Skip fancy button animations on mobile
+            if (isMobile || isUnmountingRef.current) return;
+
+            if (exploreButtonRef.current) {
               const blueGlowElement = exploreButtonRef.current.querySelector('.blue-glow');
               const glowElement = exploreButtonRef.current.querySelector('.button-glow');
 
@@ -311,7 +314,7 @@ const StackingCardsShowcase = () => {
                 scale: 1.15,
                 duration: 0.4,
                 ease: 'power2.inOut',
-              }, 0); // Start immediately
+              }, 0);
 
               // Blue glow appears as button scales up
               if (blueGlowElement) {
@@ -319,7 +322,7 @@ const StackingCardsShowcase = () => {
                   opacity: 0.5,
                   duration: 0.2,
                   ease: 'power2.inOut',
-                }, 0); // Start at the same time as button scale
+                }, 0);
               }
 
               // Regular glow effect
@@ -388,7 +391,7 @@ const StackingCardsShowcase = () => {
         opacity: 1,
         scale: 1,
         duration: 0.5,
-        force3D: true // Ensures GPU acceleration
+        force3D: true
       });
 
       // Background image scroll animation - synced with card animations
@@ -409,7 +412,7 @@ const StackingCardsShowcase = () => {
             // Set initial state - image partially visible at start
             gsap.set(img, {
               y: startY,
-              opacity: 1,              // Fully visible from the start
+              opacity: 1,
               force3D: true
             });
 
@@ -418,17 +421,17 @@ const StackingCardsShowcase = () => {
               scrollTrigger: {
                 trigger: sectionRef.current,
                 start: 'top top',
-                end: '+=400%',          // Match card animation scroll distance
-                scrub: 0.5,             // Match master timeline for tight sync
+                end: '+=400%',
+                scrub: 0.5,
                 invalidateOnRefresh: true
               }
             });
 
             // Move from partially visible to completely off-screen at bottom
             imageTimeline.to(img, {
-              y: endY,                  // Move from partial visibility to bottom
-              duration: 1,              // Full scroll duration
-              ease: 'none',             // Linear movement for predictable sync
+              y: endY,
+              duration: 1,
+              ease: 'none',
               force3D: true
             });
           };
@@ -449,8 +452,6 @@ const StackingCardsShowcase = () => {
           const setupMobileImageAnimation = () => {
             const imageHeight = mobileImg.naturalHeight;
 
-            // Start with top portion of image already visible
-            // End with bottom portion still visible (image never fully disappears)
             const startY = -imageHeight * 0.28;
             const endY = -imageHeight * -0.1;
 
@@ -540,7 +541,6 @@ const StackingCardsShowcase = () => {
           const img = backgroundLinesRef.current.querySelector('img');
           if (img) {
             gsap.killTweensOf(img);
-            // Remove load event listener if it was added
             img.removeEventListener('load', () => { });
           }
         } catch (e) {
@@ -622,8 +622,8 @@ const StackingCardsShowcase = () => {
         />
       </div>
 
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Animated Background — hidden on mobile */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
         <div className="absolute top-1/3 -left-48 w-96 h-96 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
         <div className="absolute top-2/3 -right-48 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" style={{ animationDelay: '2s' }}></div>
       </div>
@@ -648,17 +648,17 @@ const StackingCardsShowcase = () => {
                 className="group absolute inset-0 mx-auto w-full md:w-auto"
                 style={{
                   transformStyle: 'preserve-3d',
-                  willChange: 'transform, opacity' // Optimized for both transform and opacity changes
+                  willChange: 'transform'
                 }}
               >
                 <a href={product.link} className="glass-card block cursor-pointer h-[420px] w-full max-w-md md:max-w-xs mx-auto md:ml-12 rounded-3xl shadow-2xl overflow-hidden">
                   <div className="relative h-full w-full">
-                    {/* Background Image with Parallax */}
+                    {/* Background Image with Parallax — no hover scale on mobile */}
                     <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                      className="absolute inset-0 bg-cover bg-center md:transition-transform md:duration-700 md:group-hover:scale-110"
                       style={{ backgroundImage: `url(${product.image})` }}
                     >
-                      <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-30 group-hover:opacity-40 transition-opacity duration-300`}></div>
+                      <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-30 md:group-hover:opacity-40 md:transition-opacity md:duration-300`}></div>
                     </div>
 
                     {/* Gradient Overlay */}
@@ -666,18 +666,18 @@ const StackingCardsShowcase = () => {
 
                     {/* Content */}
                     <div className="relative h-full flex flex-col justify-end p-8 text-white">
-                      <div className="transform transition-transform duration-300 group-hover:translate-y-[-4px]">
+                      <div className="md:transform md:transition-transform md:duration-300 md:group-hover:translate-y-[-4px]">
                         <h3 className="text-2xl font-bold mb-3">{product.title}</h3>
                         
-                        <div className="inline-flex items-center text-sm font-semibold bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 group-hover:bg-white/20 transition-all duration-300">
+                        <div className="inline-flex items-center text-sm font-semibold bg-white/10 md:backdrop-blur-sm rounded-full px-4 py-2 md:group-hover:bg-white/20 md:transition-all md:duration-300">
                           <span>View Products</span>
-                          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                          <ArrowRight className="w-4 h-4 ml-2 md:group-hover:translate-x-1 md:transition-transform" />
                         </div>
                       </div>
                     </div>
 
-                    {/* Shine effect on hover */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    {/* Shine effect on hover — desktop only */}
+                    <div className="hidden md:block absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                     </div>
                   </div>
@@ -689,36 +689,36 @@ const StackingCardsShowcase = () => {
           <div
             ref={ctaRef}
             className="absolute inset-0 flex items-center justify-center pointer-events-none"
-            style={{ willChange: 'transform, opacity' }} // Optimized for both transform and opacity changes
+            style={{ willChange: 'transform, opacity' }}
           >
             <Link
               href="/products"
               ref={exploreButtonRef}
               className="pointer-events-auto group relative"
             >
-              {/* Blue glow - continuous pulsing */}
-              <div className="blue-glow absolute -inset-2 bg-blue-500 rounded-full opacity-0 blur-2xl transition-all duration-300 group-hover:opacity-70 group-hover:blur-3xl"></div>
+              {/* Blue glow - continuous pulsing — desktop only */}
+              <div className="blue-glow hidden md:block absolute -inset-2 bg-blue-500 rounded-full opacity-0 blur-2xl transition-all duration-300 group-hover:opacity-70 group-hover:blur-3xl"></div>
 
-              {/* Animated glow background */}
-              <div className="button-glow absolute -inset-1 bg-gradient-to-r from-primary-600 via-primary-700 to-primary-600 rounded-full opacity-0 blur-xl transition-all duration-300 group-hover:opacity-100 animate-gradient-xy"></div>
+              {/* Animated glow background — desktop only */}
+              <div className="button-glow hidden md:block absolute -inset-1 bg-gradient-to-r from-primary-600 via-primary-700 to-primary-600 rounded-full opacity-0 blur-xl transition-all duration-300 group-hover:opacity-100 animate-gradient-xy"></div>
 
               {/* Main button */}
               <div className="relative px-10 py-5 bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 text-white rounded-full font-bold text-xl shadow-2xl overflow-hidden transition-all duration-300 group-hover:scale-105 group-hover:shadow-primary-500/50">
-                {/* Shimmer effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                {/* Shimmer effect — desktop only */}
+                <div className="hidden md:block absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
                 </div>
 
-                {/* Particles effect on hover */}
-                <div className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {/* Particles effect on hover — desktop only */}
+                <div className="hidden md:block absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="particle absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full animate-particle-1"></div>
                   <div className="particle absolute top-1/2 left-1/3 w-1 h-1 bg-white rounded-full animate-particle-2"></div>
                   <div className="particle absolute top-3/4 left-2/3 w-1 h-1 bg-white rounded-full animate-particle-3"></div>
                   <div className="particle absolute top-1/3 left-3/4 w-1 h-1 bg-white rounded-full animate-particle-4"></div>
                 </div>
 
-                {/* Border animation */}
-                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {/* Border animation — desktop only */}
+                <div className="hidden md:block absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute inset-0 rounded-full border-2 border-white/50 animate-ping-slow"></div>
                 </div>
 
@@ -731,8 +731,8 @@ const StackingCardsShowcase = () => {
                   </span>
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300 group-hover:rotate-[-10deg]" />
 
-                  {/* Sparkle on hover */}
-                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {/* Sparkle on hover — desktop only */}
+                  <span className="hidden md:block absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     ✨
                   </span>
                 </div>

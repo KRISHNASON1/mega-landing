@@ -7,7 +7,7 @@ const CTASection = () => {
     <section className="relative py-32 overflow-hidden">
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900">
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 hidden md:block">
           <div className="absolute top-20 left-20 w-72 h-72 bg-white rounded-full filter blur-3xl animate-blob"></div>
           <div className="absolute bottom-20 right-20 w-72 h-72 bg-white rounded-full filter blur-3xl animate-blob" style={{ animationDelay: '2s' }}></div>
         </div>
