@@ -282,7 +282,7 @@ const HorizontalScrollSection = () => {
                                 <div
                                     key={card.id}
                                     ref={(el) => (mobileCardsRefs.current[index] = el)}
-                                    className="absolute inset-x-4 top-0 bottom-0"
+                                    className="absolute inset-x-4 top-[35px] bottom-0"
                                     style={{
                                         willChange: 'transform',
                                     }}

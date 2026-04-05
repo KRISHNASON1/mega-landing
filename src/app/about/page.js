@@ -253,7 +253,7 @@ export default function AboutPage() {
       </div>
 
       {/* Full width container for scroll section */}
-      <div className="w-full mb-20">
+      <div className="w-full">
         <HorizontalScrollSection />
       </div>
 
