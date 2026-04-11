@@ -5,7 +5,7 @@ import Footer from '@/components/layout/Footer';
 import GSAPCleanup from '@/components/utils/GSAPCleanup';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import SmoothScroll from '@/components/utils/SmoothScroll';
-import { OrganizationSchema, SpeakableSchema } from '@/components/SchemaMarkup';
+import { OrganizationSchema, SpeakableSchema, SiteLinksSchema } from '@/components/SchemaMarkup';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -39,6 +39,11 @@ export const metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    other: {
+      'msvalidate.01': 'F723B27702BEF6A5363EDBC9E744597F',
+    },
+  },
 };
 
 export const viewport = {
@@ -53,6 +58,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.variable} font-sans`}>
         <OrganizationSchema />
         <SpeakableSchema />
+        <SiteLinksSchema />
         <SmoothScroll />
         <WelcomeScreen />
         <GSAPCleanup />
