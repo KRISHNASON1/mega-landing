@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
     ArrowLeft,
     Phone,
@@ -439,10 +440,63 @@ const processSteps = [
     { step: '06', title: 'Handover & Support', desc: 'Complete documentation, as-built drawings, test certificates, and AMC support.' },
 ];
 
+/* ─────────────────────────────────────────────
+   QUICK NAV (TABLE OF CONTENTS)
+───────────────────────────────────────────── */
+function QuickNav() {
+    const [activeSection, setActiveSection] = useState('');
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id);
+                    }
+                });
+            },
+            { rootMargin: '-100px 0px -60% 0px', threshold: 0 }
+        );
+
+        serviceCategories.forEach((cat) => {
+            const el = document.getElementById(cat.id);
+            if (el) observer.observe(el);
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
+    return (
+        <div className="hidden xl:block sticky top-32 self-start">
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 w-64">
+                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Quick Navigation</h3>
+                <nav className="space-y-1">
+                    {serviceCategories.map((cat) => (
+                        <a
+                            key={cat.id}
+                            href={`#${cat.id}`}
+                            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${activeSection === cat.id
+                                    ? 'bg-primary-50 text-primary-700'
+                                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                                }`}
+                        >
+                            <span className={`transition-colors ${activeSection === cat.id ? 'text-primary-500' : 'text-gray-400'}`}>
+                                {cat.icon}
+                            </span>
+                            <span className="truncate">{cat.title.split('—')[0].trim()}</span>
+                        </a>
+                    ))}
+                </nav>
+            </div>
+        </div>
+    );
+}
+
 /* ═══════════════════════════════════════════
    MAIN PAGE
 ═══════════════════════════════════════════ */
 export default function ElectricalJobsPage() {
+    const router = useRouter();
     // Reveal animation
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -500,10 +554,10 @@ export default function ElectricalJobsPage() {
                     <div className="max-w-3xl">
                         {/* Back Button */}
                         <div className="mb-8">
-                            <Link href="/services" className="inline-flex items-center justify-center px-5 py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-medium hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300 shadow-lg">
+                            <button onClick={() => router.back()} className="inline-flex items-center justify-center px-5 py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-medium hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300 shadow-lg cursor-pointer">
                                 <ArrowLeft className="w-5 h-5 mr-2" />
-                                Back to Services
-                            </Link>
+                                Go Back
+                            </button>
                         </div>
 
 
@@ -604,6 +658,9 @@ export default function ElectricalJobsPage() {
                     </div>
 
                     <div className="flex gap-10">
+                        {/* Quick Nav */}
+                        <QuickNav />
+
                         {/* Service sections */}
                         <div className="flex-1 space-y-16">
                             {serviceCategories.map((service, i) => (

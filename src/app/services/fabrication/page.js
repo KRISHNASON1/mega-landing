@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ArrowLeft, Phone, CheckCircle2, Wrench, Settings, Factory } from 'lucide-react';
 
 /* ───────── Dummy images per project ───────── */
@@ -241,16 +242,17 @@ const projects = [
 
 /* ───────── Main Page ───────── */
 export default function FabricationPortfolio() {
+    const router = useRouter();
     return (
         <div className="min-h-screen bg-gray-50 pt-32 pb-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Breadcrumb */}
                 <div className="mb-8">
-                    <Link href="/services" className="inline-flex items-center text-gray-600 hover:text-primary-600 transition-colors font-medium">
+                    <button onClick={() => router.back()} className="inline-flex items-center text-gray-600 hover:text-primary-600 transition-colors font-medium bg-transparent border-none p-0 cursor-pointer text-base">
                         <ArrowLeft className="w-4 h-4 mr-2" />
-                        Back to Services
-                    </Link>
+                        Go Back
+                    </button>
                 </div>
 
                 {/* Hero */}
