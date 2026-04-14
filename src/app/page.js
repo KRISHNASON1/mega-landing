@@ -2,14 +2,12 @@
 
 import { useEffect } from 'react';
 import Hero from '@/components/home/Hero';
-import AboutSnippet from '@/components/home/AboutSnippet';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
 import StackingCardsShowcase from '@/components/home/StackingCardsShowcase';
 import BrandsShowcase from '@/components/home/BrandsShowcase';
 import ClientsShowcase from '@/components/home/ClientsShowcase';
 import GeMCompliance from '@/components/home/GeMCompliance';
 import CTASection from '@/components/home/CTASection';
-import FAQ from '@/components/home/FAQ';
 
 export default function Home() {
   useEffect(() => {
@@ -36,7 +34,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <AboutSnippet />
       <FeaturedProducts />
       <StackingCardsShowcase />
       <div className="reveal">
@@ -48,7 +45,6 @@ export default function Home() {
       <div className="reveal">
         <GeMCompliance />
       </div>
-      <FAQ />
       <div className="reveal">
         <CTASection />
       </div>

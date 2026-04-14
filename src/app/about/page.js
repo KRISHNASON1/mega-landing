@@ -8,6 +8,7 @@ import HorizontalScrollSection from '@/components/ui/HorizontalScrollSection';
 export default function AboutPage() {
   const [activeStat, setActiveStat] = useState(-1);
   const [isMobile, setIsMobile] = useState(false);
+  const [statsVisible, setStatsVisible] = useState(false);
 
   // Detect mobile viewport
   useEffect(() => {
@@ -15,6 +16,12 @@ export default function AboutPage() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Trigger stats visibility on mount
+  useEffect(() => {
+    const timer = setTimeout(() => setStatsVisible(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -110,20 +117,20 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-0 relative max-w-6xl mx-auto">
               {[
-                { value: '50+', label: 'Major Clients', icon: Users, offset: 'md:translate-y-12', delay: '0.2s' },
-                { value: '1000+', label: 'Products', icon: Building2, offset: 'md:translate-y-2', delay: '0.3s' },
-                { value: '20+', label: 'Brand Partners', icon: TrendingUp, offset: 'translate-y-0', delay: '0.4s' },
+                { value: '50+', label: 'Major Clients', icon: Users, offset: 'md:translate-y-12', delay: 200 },
+                { value: '1000+', label: 'Products', icon: Building2, offset: 'md:translate-y-2', delay: 300 },
+                { value: '20+', label: 'Brand Partners', icon: TrendingUp, offset: 'translate-y-0', delay: 400 },
               ].map((stat, index) => {
                 const Icon = stat.icon;
                 const isActive = activeStat === index;
 
                 return (
                   <div key={index}
-                    className={`flex flex-col items-center relative ${stat.offset}`}
+                    className={`flex flex-col items-center relative ${stat.offset} transition-all duration-700 ease-out`}
                     style={{
-                      animation: `fadeUp 0.8s ease-out forwards ${stat.delay}`,
-                      opacity: 0,
-                      transform: 'translateY(20px)'
+                      opacity: statsVisible ? 1 : 0,
+                      transform: statsVisible ? 'translateY(0)' : 'translateY(20px)',
+                      transitionDelay: `${stat.delay}ms`,
                     }}
                   >
                     {/* Icon circle */}
