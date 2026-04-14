@@ -34,84 +34,84 @@ const StackingCardsShowcase = () => {
     {
       id: 1,
       title: 'Power & Hand Tools',
-      image: '/images/Products_preview/PowerTools&HandTools.png',
+      image: '/images/Products_preview/PowerTools&HandTools.jpg',
       color: 'from-blue-500 to-blue-700',
       link: '/products/hardware/power-hand-tools'
     },
     {
       id: 2,
       title: 'Lugs & Glands',
-      image: '/images/Products_preview/Lugs&Glands.png',
+      image: '/images/Products_preview/Lugs&Glands.jpg',
       color: 'from-cyan-500 to-cyan-700',
       link: '/products/electrical/lugs-glands'
     },
     {
       id: 3,
       title: 'Switchgears',
-      image: '/images/Products_preview/Switchgears.png',
+      image: '/images/Products_preview/Switchgears.jpg',
       color: 'from-yellow-500 to-yellow-700',
       link: '/products/electrical/switchgears'
     },
     {
       id: 4,
       title: 'Tarpaulin',
-      image: '/images/Products_preview/Tarpaulin.png',
+      image: '/images/Products_preview/Tarpaulin.jpg',
       color: 'from-red-500 to-red-700',
       link: '/products/hardware/tarpaulin'
     },
     {
       id: 5,
       title: 'Nuts, Bolts & Fasteners',
-      image: '/images/Products_preview/NutsBolts&Fasteners.png',
+      image: '/images/Products_preview/NutsBolts&Fasteners.jpg',
       color: 'from-orange-500 to-orange-700',
       link: '/products/hardware/fasteners'
     },
     {
       id: 6,
       title: 'Waterproofing',
-      image: '/images/Products_preview/waterProofing.png',
+      image: '/images/Products_preview/waterProofing.jpg',
       color: 'from-purple-500 to-purple-700',
       link: '/products/construction-chemicals/waterproofing'
     },
     {
       id: 7,
       title: 'Wood Coating',
-      image: '/images/Products_preview/woodPainting.png',
+      image: '/images/Products_preview/woodPainting.jpg',
       color: 'from-orange-400 to-orange-600',
       link: '/products/construction-chemicals/wood-coatings'
     },
     {
       id: 8,
       title: 'TMT Bars',
-      image: '/images/Products_preview/TMTBars.png',
+      image: '/images/Products_preview/TMTBars.jpg',
       color: 'from-red-600 to-red-800',
       link: '/products/structural-steel/tmt-bars'
     },
     {
       id: 9,
       title: 'Fall Protection',
-      image: '/images/Products_preview/FallProtection.png',
+      image: '/images/Products_preview/FallProtection.jpg',
       color: 'from-yellow-600 to-amber-800',
       link: '/products/safety-ppe/fall-protection'
     },
     {
       id: 10,
       title: 'Earth Moving Equipment',
-      image: '/images/Products_preview/EarthMovingEquipment.png',
+      image: '/images/Products_preview/EarthMovingEquipment.jpg',
       color: 'from-indigo-500 to-indigo-700',
       link: '/products/construction-equipment/earth-moving'
     },
     {
       id: 11,
       title: 'CPVC Pipes & Fittings',
-      image: '/images/Products_preview/CPVCPipes&Fittings.png',
+      image: '/images/Products_preview/CPVCPipes&Fittings.jpg',
       color: 'from-pink-500 to-pink-700',
       link: '/products/pipes-fittings/cpvc'
     },
     {
       id: 12,
       title: 'Flanges & Gaskets',
-      image: '/images/Products_preview/Flanges&Gaskets.png',
+      image: '/images/Products_preview/Flanges&Gaskets.jpg',
       color: 'from-gray-600 to-gray-800',
       link: '/products/pipes-fittings/flanges-gaskets'
     }

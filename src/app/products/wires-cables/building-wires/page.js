@@ -5,25 +5,25 @@ export default function BuildingWiresPage() {
         {
             name: 'House Wiring Cable (FR)',
             description: 'Flame retardant PVC insulated wires for residential electrical wiring.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['FR PVC Insulation', '1.0 to 6.0 sq.mm', 'ISI Marked'],
         },
         {
             name: 'FRLS House Wire',
             description: 'Fire retardant low smoke wires for enhanced safety in buildings.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Low Smoke Emission', 'Halogen Free Option', 'HR Insulation'],
         },
         {
             name: 'Flat Twin + Earth Cable',
             description: 'Flat profile cables for concealed wiring with earth conductor.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['2.5/4.0 sq.mm', 'Easy Stripping', 'Gray Sheath'],
         },
         {
             name: 'Conduit Wiring Cable',
             description: 'Solid/stranded conductor wires designed for conduit installations.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Solid Conductor', 'Easy Pull-through', 'Color Coded'],
         },
     ];

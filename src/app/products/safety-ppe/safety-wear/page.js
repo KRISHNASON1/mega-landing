@@ -5,25 +5,25 @@ export default function SafetyWearPage() {
         {
             name: 'Safety Helmet',
             description: 'High-density polyethylene (HDPE) shell helmets with 6-point suspension system.',
-            image: '/images/Products_preview/Abrasives.png', // Hard hat
+            image: '/images/Products_preview/Abrasives.jpg', // Hard hat
             specs: ['IS 2925 Certified', 'Ratchet Adjustment', 'Ventilated Options'],
         },
         {
             name: 'Reflective Safety Vest',
             description: 'Polyester mesh safety vests with 2-inch reflective tape for high visibility.',
-            image: '/images/Products_preview/Abrasives.png', // Vest
+            image: '/images/Products_preview/Abrasives.jpg', // Vest
             specs: ['Green / Orange', 'Zipper / Velcro Front', 'ID Pocket'],
         },
         {
             name: 'Ear Muffs',
             description: 'Industrial ear muffs for high decibel noise attenuation in factories and airports.',
-            image: '/images/Products_preview/Abrasives.png', // Ear protection
+            image: '/images/Products_preview/Abrasives.jpg', // Ear protection
             specs: ['SNR 30dB+', 'Padded Headband', 'Dielectric Design'],
         },
         {
             name: 'Safety Rain Coat',
             description: 'Heavy duty PVC/Polyester rain coats with reflective strips for monsoon work.',
-            image: '/images/Products_preview/Abrasives.png', // Rain gear vibe
+            image: '/images/Products_preview/Abrasives.jpg', // Rain gear vibe
             specs: ['100% Waterproof', 'Sealed Seams', 'Breathable Vents'],
         },
     ];

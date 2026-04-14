@@ -5,25 +5,25 @@ export default function GreasesPage() {
         {
             name: 'Multi-Purpose Grease',
             description: 'Lithium-based grease for general industrial lubrication.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['NLGI Grade 2/3', 'Lithium Thickener', 'EP Additives'],
         },
         {
             name: 'High Temperature Grease',
             description: 'Synthetic grease for high-temperature bearing applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Up to 200°C', 'Synthetic Base', 'Long Relubrication'],
         },
         {
             name: 'Calcium Grease',
             description: 'Water-resistant grease for wet and outdoor applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Excellent Water Resistance', 'Calcium Thickener', 'Marine Grade'],
         },
         {
             name: 'Moly Grease',
             description: 'Molybdenum disulfide grease for heavy load applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['MoS2 Additive', 'Extreme Pressure', 'Shock Load Protection'],
         },
     ];

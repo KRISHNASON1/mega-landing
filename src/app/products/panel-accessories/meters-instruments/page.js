@@ -5,25 +5,25 @@ export default function MetersInstrumentsPage() {
         {
             name: 'Digital Panel Meter',
             description: 'Multifunction digital meters for voltage, current, power, and energy.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Single/Three Phase', 'Modbus Communication', 'LCD/LED Display'],
         },
         {
             name: 'Analog Panel Meter',
             description: 'Moving coil ammeter and voltmeter for panel indication.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['48/72/96 mm Size', 'AC/DC Range', 'Class 1.5 Accuracy'],
         },
         {
             name: 'Energy Meter',
             description: 'kWh meters for energy monitoring and billing applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Single/Three Phase', 'CT Operated', 'Pulse Output'],
         },
         {
             name: 'Current Transformer',
             description: 'Measuring CTs for ammeter and energy meter applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Window/Bar Type', '5A Secondary', 'Class 1/0.5'],
         },
     ];

@@ -5,25 +5,25 @@ export default function EmergencyLightingPage() {
         {
             name: 'Emergency Exit Light',
             description: 'Illuminated exit signs with battery backup for safe evacuation.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Maintained/Non-Maintained', '3 Hour Backup', 'Self-Test'],
         },
         {
             name: 'Emergency Bulkhead',
             description: 'Wall-mounted emergency lights for corridors and stairways.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['LED Technology', 'IP65 Option', 'Easy Maintenance'],
         },
         {
             name: 'Emergency Conversion Kit',
             description: 'Battery backup kit to convert normal lights to emergency lights.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Universal Fit', 'Li-Ion Battery', '90 Min Backup'],
         },
         {
             name: 'Central Battery System',
             description: 'Centralized emergency lighting power supply systems.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Central Monitoring', 'Large Buildings', 'Auto-Test'],
         },
     ];

@@ -5,25 +5,25 @@ export default function PushButtonsIndicatorsPage() {
         {
             name: 'Push Button Station',
             description: 'Industrial push buttons in metal or plastic enclosures.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['1 to 6 Button', 'Metal/Plastic', 'IP65 Rating'],
         },
         {
             name: 'Pilot Light',
             description: 'LED indicator lamps for panel status indication.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['22mm/16mm Size', 'LED Type', 'Various Colors'],
         },
         {
             name: 'Selector Switch',
             description: 'Rotary selector switches for mode selection.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['2/3 Position', 'Maintained/Spring', 'Key Operated Option'],
         },
         {
             name: 'Emergency Stop',
             description: 'Mushroom head emergency stop buttons with positive opening.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['40mm Head', 'Twist/Key Release', 'NC Contact'],
         },
     ];

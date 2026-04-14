@@ -7,7 +7,7 @@ export async function generateMetadata() {
     openGraph: {
       title: 'Industrial Lubricants | MEGA Enterprise',
       description: 'High performance industrial lubricants, hydraulic oils, gear oils.',
-      images: ['/images/Products_preview/Lubricants.png'],
+      images: ['/images/Products_preview/Lubricants.jpg'],
     },
   };
 }
@@ -23,7 +23,7 @@ export default function LubricantsLayout({ children }) {
       <ProductSchema 
         name="Industrial Lubricants Collection"
         description="High performance industrial lubricants, hydraulic oils, gear oils, and specialty greases for heavy machinery."
-        image="https://megaenterprise.in/images/Products_preview/Lubricants.png"
+        image="https://megaenterprise.in/images/Products_preview/Lubricants.jpg"
         brand="Castrol & Shell via MEGA Enterprise"
       />
       {children}

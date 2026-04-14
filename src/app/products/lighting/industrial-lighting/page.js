@@ -5,25 +5,25 @@ export default function IndustrialLightingPage() {
         {
             name: 'LED High Bay Light',
             description: 'High-output fixtures for warehouses, factories, and industrial facilities.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['100W to 400W', 'IP65 Rating', '150 lm/W'],
         },
         {
             name: 'LED Flood Light',
             description: 'Area lighting for outdoor industrial spaces and yards.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['50W to 500W', 'Weatherproof', 'Wide Beam'],
         },
         {
             name: 'Flameproof Light',
             description: 'Explosion-proof luminaires for hazardous area installations.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Zone 1 & 2', 'Ex d IIB/IIC', 'ATEX Certified'],
         },
         {
             name: 'Clean Room Light',
             description: 'IP65 sealed luminaires for pharmaceutical and food industries.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Dust Tight', 'Washable', 'Uniform Light'],
         },
     ];

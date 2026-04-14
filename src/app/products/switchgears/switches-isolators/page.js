@@ -5,25 +5,25 @@ export default function SwitchesIsolatorsPage() {
         {
             name: 'Load Break Switch',
             description: 'On-load switching devices for safe isolation of electrical circuits.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['63A to 630A', '3P/4P Versions', 'Visible Break'],
         },
         {
             name: 'Isolator Switch',
             description: 'Off-load disconnectors for maintenance isolation purposes.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Padlockable', 'Front Operated', 'IP65 Available'],
         },
         {
             name: 'Changeover Switch',
             description: 'Manual and automatic changeover switches for dual supply applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['On-Off-On', 'Center Off', 'Motorized Option'],
         },
         {
             name: 'Rotary Cam Switch',
             description: 'Selector switches for motor control and panel applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Multi-Position', 'Door Interlock', 'Various Circuits'],
         },
     ];

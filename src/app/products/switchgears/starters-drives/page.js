@@ -5,25 +5,25 @@ export default function StartersDrivesPage() {
         {
             name: 'DOL Starter',
             description: 'Direct-on-line starters for small motor starting applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Up to 7.5kW', 'Integrated Overload', 'Sheet Steel Enclosure'],
         },
         {
             name: 'Star-Delta Starter',
             description: 'Reduced voltage starters for larger motors to limit starting current.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['7.5kW to 150kW', 'Auto Transition', 'Timer Controlled'],
         },
         {
             name: 'Soft Starter',
             description: 'Electronic soft starters for smooth motor acceleration and deceleration.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Thyristor Based', 'Programmable Ramp', 'Built-in Bypass'],
         },
         {
             name: 'VFD / VSD',
             description: 'Variable frequency drives for precise speed control and energy savings.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['0.37kW to 500kW', 'V/F & Vector Control', 'Modbus/Profibus'],
         },
     ];

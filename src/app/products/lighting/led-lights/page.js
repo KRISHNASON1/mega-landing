@@ -5,25 +5,25 @@ export default function LedLightsPage() {
         {
             name: 'LED Bulb',
             description: 'Energy-efficient LED bulbs for general household and commercial lighting.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['7W to 23W', 'Warm/Cool White', 'B22/E27 Base'],
         },
         {
             name: 'LED Tube Light',
             description: 'T8/T5 LED tube lights to replace traditional fluorescent tubes.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['18W/20W/22W', '4ft Length', 'Direct Replacement'],
         },
         {
             name: 'LED Panel Light',
             description: 'Slim LED panels for false ceiling and office lighting.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['2x2 / 1x4 / 2x4', 'Edge-Lit/Back-Lit', 'Flicker-Free'],
         },
         {
             name: 'LED Downlight',
             description: 'Recessed LED downlights for residential and commercial spaces.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['6W to 24W', 'Various Cut-outs', 'Dimmable Option'],
         },
     ];

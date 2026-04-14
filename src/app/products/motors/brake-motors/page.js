@@ -5,19 +5,19 @@ export default function BrakeMotorsPage() {
         {
             name: 'DC Brake Motor',
             description: 'Motors with fail-safe DC electromagnetic brakes for quick stopping.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Spring Applied', 'Fail-Safe Design', '< 0.5s Stop Time'],
         },
         {
             name: 'AC Brake Motor',
             description: 'AC operated brake motors for non-critical braking applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['AC Coil Operation', 'Simple Wiring', 'Cost Effective'],
         },
         {
             name: 'Conical Rotor Brake Motor',
             description: 'Self-braking motors with conical rotor design for hoists.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['No External Brake', 'Built-in Braking', 'Hoist Duty'],
         },
     ];

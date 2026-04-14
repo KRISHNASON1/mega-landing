@@ -5,25 +5,25 @@ export default function ContactorsRelaysPage() {
         {
             name: 'Power Contactor',
             description: 'AC power contactors for motor switching and control panel applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['9A to 630A', 'AC1/AC3 Rated', 'Coil: 24V to 415V'],
         },
         {
             name: 'Auxiliary Contactor',
             description: 'Control relays for interlocking and auxiliary circuit switching.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['4NO/4NC', 'Front Mount', 'Side Mount Add-on'],
         },
         {
             name: 'Thermal Overload Relay',
             description: 'Bimetallic overload relays for motor overload protection.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Adjustable Range', 'Manual/Auto Reset', 'Class 10/20'],
         },
         {
             name: 'Timer Relay',
             description: 'Electronic and mechanical timers for on-delay and off-delay applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['0.1s to 100h Range', 'Multi-Function', 'DIN Rail Mount'],
         },
     ];

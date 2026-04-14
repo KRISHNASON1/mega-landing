@@ -5,25 +5,25 @@ export default function SolarInvertersPage() {
         {
             name: 'On-Grid Solar Inverter',
             description: 'Grid-tied inverters with net metering support for connected installations.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['1kW to 100kW', 'MPPT Tracking', 'Wi-Fi Monitoring'],
         },
         {
             name: 'Off-Grid Solar Inverter',
             description: 'Standalone inverters with battery charging for remote locations.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['1kVA to 10kVA', 'PWM/MPPT Charge', 'LCD Display'],
         },
         {
             name: 'Hybrid Solar Inverter',
             description: 'Combined on-grid and off-grid capability with battery backup.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Best of Both', 'Priority Settings', 'App Control'],
         },
         {
             name: 'Micro Inverter',
             description: 'Panel-level inverters for module-level power optimization.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Per Panel', 'Max Output', 'Easy Monitoring'],
         },
     ];

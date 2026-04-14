@@ -66,7 +66,7 @@ export default function ProductListing({ title, description, benefits, products,
                         <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
                             <div className={`h-64 overflow-hidden relative flex items-center justify-center ${fitImages || product.fitImage ? 'bg-white' : 'bg-gray-100'}`}>
                                 <Image
-                                    src={product.image || '/images/Products_preview/PowerTools&HandTools.png'}
+                                    src={product.image || '/images/Products_preview/PowerTools&HandTools.jpg'}
                                     alt={`${product.name} - industrial fabrication and engineering component`}
                                     fill
                                     className={`${fitImages || product.fitImage ? 'object-contain group-hover:scale-125' : 'object-cover group-hover:scale-110'} transition-transform duration-500`}

@@ -5,25 +5,25 @@ export default function RespiratoryProtectionPage() {
         {
             name: 'N95 Particulate Respirator',
             description: 'NIOSH approved N95 disposable face mask for protection against dust and non-oil based particles.',
-            image: '/images/Products_preview/Abrasives.png', // Mask
+            image: '/images/Products_preview/Abrasives.jpg', // Mask
             specs: ['NIOSH N95', 'Adjustable Nose Clip', 'Fluid Resistant'],
         },
         {
             name: 'Half Face reusable Mask',
             description: 'Reusable half facepiece respirators with bayonet connection for dual filters.',
-            image: '/images/Products_preview/Abrasives.png', // Gas mask vibe
+            image: '/images/Products_preview/Abrasives.jpg', // Gas mask vibe
             specs: ['Silicone Face Seal', 'Dual Cartridge System', 'Drop-down Feature'],
         },
         {
             name: 'Full Face Mask',
             description: 'Comprehensive face and respiratory protection against gases, vapors, and particles.',
-            image: '/images/Products_preview/Abrasives.png', // Full face
+            image: '/images/Products_preview/Abrasives.jpg', // Full face
             specs: ['Wide Field of View', 'Impact Resistant Lens', 'Speaking Diaphragm'],
         },
         {
             name: 'Chemical Cartridges/Filters',
             description: 'Replaceable filters for organic vapors, acid gases, and ammonia.',
-            image: '/images/Products_preview/Abrasives.png', // Filters
+            image: '/images/Products_preview/Abrasives.jpg', // Filters
             specs: ['OV / AG / Ammonia', 'P100 Particulate', 'Easy Bayonet Fit'],
         },
     ];

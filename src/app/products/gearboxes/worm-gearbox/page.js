@@ -5,19 +5,19 @@ export default function WormGearboxPage() {
         {
             name: 'Aluminum Worm Gearbox',
             description: 'Lightweight aluminum body worm reducers for general purpose applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Size 25 to 90', 'Ratio 5:1 to 100:1', 'Aluminum Housing'],
         },
         {
             name: 'Cast Iron Worm Gearbox',
             description: 'Heavy-duty cast iron worm gear units for industrial applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Size 100 to 250', 'High Torque', 'Multiple Mounting'],
         },
         {
             name: 'Double Reduction Worm Gearbox',
             description: 'Two-stage worm reducers for very high reduction ratios.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Ratio up to 3600:1', 'Compact Design', 'Self-Locking'],
         },
     ];

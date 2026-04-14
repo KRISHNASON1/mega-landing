@@ -5,25 +5,25 @@ export default function InductionMotorsPage() {
         {
             name: 'LT Squirrel Cage Motor',
             description: 'Standard efficiency three-phase induction motors for general purpose applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['0.37kW to 315kW', 'IE1/IE2/IE3', '2/4/6/8 Pole'],
         },
         {
             name: 'Flameproof Motor',
             description: 'Explosion-proof motors for hazardous area installations.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['Ex d IIB T4', 'Zone 1 & 2', 'ATEX Certified'],
         },
         {
             name: 'High Efficiency Motor (IE3)',
             description: 'Premium efficiency motors for energy savings and reduced operating costs.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['IE3 Standard', 'Lower Losses', 'Quick Payback'],
         },
         {
             name: 'Slip Ring Motor',
             description: 'Wound rotor motors for high starting torque and speed control.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['External Resistance', 'High Starting Torque', 'Rotor Control'],
         },
     ];

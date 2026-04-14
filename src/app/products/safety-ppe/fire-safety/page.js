@@ -5,25 +5,25 @@ export default function FireSafetyPage() {
         {
             name: 'ABC Powder Extinguisher',
             description: 'Multipurpose dry chemical powder extinguishers for Class A, B, and C fires.',
-            image: '/images/Products_preview/Abrasives.png', // Fire extinguisher
+            image: '/images/Products_preview/Abrasives.jpg', // Fire extinguisher
             specs: ['ISI Marked', '4kg / 6kg / 9kg', 'Squeeze Grip'],
         },
         {
             name: 'CO2 Fire Extinguisher',
             description: 'Carbon Dioxide extinguishers for electrical fires and sensitive equipment.',
-            image: '/images/Products_preview/Abrasives.png', // Industrial setting
+            image: '/images/Products_preview/Abrasives.jpg', // Industrial setting
             specs: ['Seamless Cylinder', '4.5kg Capacity', 'Non-Corrosive'],
         },
         {
             name: 'Fire Blanket',
             description: 'Fiberglass fire blankets for smothering small fires and kitchen safety.',
-            image: '/images/Products_preview/Abrasives.png', // Placeholder
+            image: '/images/Products_preview/Abrasives.jpg', // Placeholder
             specs: ['Heat Resistant > 500°C', 'Quick Release Tabs', 'Compact Box'],
         },
         {
             name: 'Hydrant Valve',
             description: 'Single headed hydrant landing valves for fire fighting water systems.',
-            image: '/images/Products_preview/Abrasives.png', // Valves
+            image: '/images/Products_preview/Abrasives.jpg', // Valves
             specs: ['Stainless Steel / Gunmetal', '63mm dia', 'Flanged Inlet'],
         },
     ];

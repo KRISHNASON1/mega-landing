@@ -5,25 +5,25 @@ export default function SolarBatteriesPage() {
         {
             name: 'Tubular Lead Acid Battery',
             description: 'Deep cycle tubular batteries for solar and inverter applications.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['100Ah to 200Ah', 'C10 Rating', '5 Year Warranty'],
         },
         {
             name: 'Lithium-Ion Solar Battery',
             description: 'Advanced lithium batteries with BMS for solar storage.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['LiFePO4 Chemistry', '10+ Year Life', 'Lightweight'],
         },
         {
             name: 'Gel Battery',
             description: 'Maintenance-free gel batteries for reliable solar backup.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['VRLA Type', 'No Topping', 'Safe Operation'],
         },
         {
             name: 'Solar Battery Bank',
             description: 'Pre-configured battery banks for larger solar installations.',
-            image: '/images/Products_preview/Abrasives.png',
+            image: '/images/Products_preview/Abrasives.jpg',
             specs: ['48V/96V/120V', 'Rack Mounted', 'BMS Included'],
         },
     ];
