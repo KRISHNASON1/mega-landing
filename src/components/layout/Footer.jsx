@@ -56,11 +56,7 @@ const Footer = () => {
             <p className="hidden lg:block text-gray-400 mb-4 leading-relaxed">
               Your trusted partner in industrial & project materials.
             </p>
-            {/* GST Number Badge */}
-            <div className="mb-6 inline-flex items-center px-3 py-1.5 bg-white/10 rounded-lg border border-white/20">
-              <span className="text-xs text-gray-400 mr-2">GST:</span>
-              <span className="text-sm font-mono font-semibold text-primary-400">27DRGPD9065L1ZA</span>
-            </div>
+
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 bg-white/10 hover:bg-primary-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
                 <Facebook className="w-5 h-5" />

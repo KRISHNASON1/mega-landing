@@ -5,7 +5,7 @@ import { CheckCircle2, Shield, Award, FileCheck } from 'lucide-react';
 const GeMCompliance = () => {
   const certifications = [
     { icon: CheckCircle2, text: 'GeM Portal Registered Vendor' },
-    { icon: Shield, text: 'GST Compliant (27DRGPD9065L1ZA)' },
+    { icon: Shield, text: 'GST Compliant' },
     { icon: FileCheck, text: 'Third Party Inspection Approved' },
     { icon: Award, text: 'NABL Lab Test Certificates' },
   ];

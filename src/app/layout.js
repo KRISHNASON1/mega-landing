@@ -20,6 +20,10 @@ export const metadata = {
   keywords: 'industrial materials, electrical supplier, GeM approved vendor, cables, LED lighting, safety equipment, Navi Mumbai, TATA, Siemens, Polycab, B2B fabrication, industrial engineering, structural steel, Taloja MIDC industrial supplier, Maharashtra engineering materials, factory automation, power tools, heavy machinery supplies',
   authors: [{ name: 'MEGA Enterprise' }],
   manifest: '/manifest.json',
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
   alternates: {
     canonical: '/',
   },
