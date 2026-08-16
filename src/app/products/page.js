@@ -107,14 +107,14 @@ export default function ProductsPage() {
       name: 'Fabrication',
       description: 'Custom metal fabrication services tailored to your specific industrial needs. Precision engineering and high-quality materials ensuring durability.',
       icon: <Hammer className="w-10 h-10" />,
-      image: '/images/Products_preview/Fabrication.jpg',
+      image: '/images/Products_preview/electrical.jpg',
       href: '/services/fabrication',
     },
     {
       name: 'Electrical Jobs',
       description: 'Comprehensive electrical installation, maintenance, and repair services. Expert technicians ensuring safety and compliance with standards.',
       icon: <Wrench className="w-10 h-10" />,
-      image: '/images/Products_preview/electrical.jpg',
+      image: '/images/Products_preview/Fabrication.jpg',
       href: '/services/electrical-jobs',
     },
   ];
